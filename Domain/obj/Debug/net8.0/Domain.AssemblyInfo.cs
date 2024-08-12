@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GMapsMagicianAPI.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5c66aaaf28367548640047cb5d59f0422583e5e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d92db855e40071429ba53fac3d6bcf1545b1132")]
 [assembly: System.Reflection.AssemblyProductAttribute("GMapsMagicianAPI.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GMapsMagicianAPI.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

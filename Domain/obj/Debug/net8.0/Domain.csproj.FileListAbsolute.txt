@@ -1,0 +1,13 @@
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\bin\Debug\net8.0\GMapsMagicianAPI.Domain.deps.json
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\bin\Debug\net8.0\GMapsMagicianAPI.Domain.dll
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\bin\Debug\net8.0\GMapsMagicianAPI.Domain.pdb
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\GMapsMagicianAPI.Domain.dll
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\refint\GMapsMagicianAPI.Domain.dll
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\GMapsMagicianAPI.Domain.pdb
+C:\Users\mfreq\Desktop\GMapsMagician-API-CSHARP\Domain\obj\Debug\net8.0\ref\GMapsMagicianAPI.Domain.dll

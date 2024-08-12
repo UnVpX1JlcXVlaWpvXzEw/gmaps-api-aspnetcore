@@ -15,7 +15,7 @@ namespace GMapsMagicianAPI.Domain.Exceptions
     /// <summary>
     /// <see cref="NotFoundException"/>
     /// </summary>
-    /// <seealso cref="QueryBuilderException"/>
+    /// <seealso cref="GMapsMagicianAPIException"/>
     [Serializable]
     public sealed class NotFoundException : GMapsMagicianAPIException
     {
