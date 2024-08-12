@@ -30,6 +30,6 @@ results/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-GMapsMagician-API-CSHARP/Presentation.WebAPI/obj/project.nuget.cache
+GMapsMagician-API/Presentation.WebAPI/obj/project.nuget.cache
 
-GMapsMagician-API-CSHARP/Presentation.WebAPI/obj/project.assets.json
+GMapsMagician-API/Presentation.WebAPI/obj/project.assets.json
