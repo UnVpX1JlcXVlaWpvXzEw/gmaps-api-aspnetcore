@@ -15,7 +15,7 @@ namespace GMapsMagicianAPI.Domain.Exceptions
     /// <summary>
     /// <see cref="DuplicatedException"/>
     /// </summary>
-    /// <seealso cref="QueryBuilderException"/>
+    /// <seealso cref="GMapsMagicianAPIException"/>
     [Serializable]
     public sealed class DuplicatedException : GMapsMagicianAPIException
     {

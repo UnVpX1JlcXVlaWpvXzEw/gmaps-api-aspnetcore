@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GMapsMagician_APIException.cs" company="ApexAlgorithms">
+// <copyright file="GMapsMagicianAPIException.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// GMapsMagician_APIException
+// GMapsMagicianAPIException
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -14,9 +14,9 @@ namespace GMapsMagicianAPI.Domain.Exceptions
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// <see cref="QueryBuilderException"/>
+    /// <see cref="GMapsMagicianAPIException"/>
     /// </summary>
-    /// <seealso cref="System.Exception"/>
+    /// <seealso cref="Exception"/>
     [Serializable]
     public class GMapsMagicianAPIException : Exception
     {
@@ -27,7 +27,7 @@ namespace GMapsMagicianAPI.Domain.Exceptions
         private readonly int errorCode;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryBuilderException"/> class.
+        /// Initializes a new instance of the <see cref="GMapsMagicianAPIException"/> class.
         /// </summary>
         /// <param name="errorCode">The error code.</param>
         public GMapsMagicianAPIException(int errorCode)
@@ -37,7 +37,7 @@ namespace GMapsMagicianAPI.Domain.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryBuilderException"/> class.
+        /// Initializes a new instance of the <see cref="GMapsMagicianAPIException"/> class.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="errorCode">The error code.</param>
@@ -48,7 +48,7 @@ namespace GMapsMagicianAPI.Domain.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryBuilderException"/> class.
+        /// Initializes a new instance of the <see cref="GMapsMagicianAPIException"/> class.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">
@@ -61,7 +61,7 @@ namespace GMapsMagicianAPI.Domain.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryBuilderException"/> class.
+        /// Initializes a new instance of the <see cref="GMapsMagicianAPIException"/> class.
         /// </summary>
         /// <param name="info">The information.</param>
         /// <param name="context">The context.</param>
@@ -73,7 +73,7 @@ namespace GMapsMagicianAPI.Domain.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryBuilderException"/> class.
+        /// Initializes a new instance of the <see cref="GMapsMagicianAPIException"/> class.
         /// </summary>
         /// <param name="info">
         /// The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the
