@@ -123,7 +123,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Query Builder API",
+                    Title = "GMapsMagicianAPI",
                 });
             });
         }
