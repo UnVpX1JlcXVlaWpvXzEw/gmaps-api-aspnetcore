@@ -6,7 +6,6 @@
 // ComparableSeed
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace GMapsMagicianAPI.Domain.SeedWork
 {
     /// <summary>
