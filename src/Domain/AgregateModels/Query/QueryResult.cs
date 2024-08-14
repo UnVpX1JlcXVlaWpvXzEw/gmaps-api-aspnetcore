@@ -40,7 +40,6 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
             : base()
         {
             this.queryResultStatusHistories = new List<QueryResultStatusHistory>();
-            this.Status = new QueryResultStatus();
         }
 
         /// <summary>

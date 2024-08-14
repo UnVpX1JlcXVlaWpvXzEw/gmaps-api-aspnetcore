@@ -60,32 +60,31 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         {
             this.queryResults = new List<QueryResult>();
             this.queryStatusHistories = new List<QueryStatusHistory>();
-            this.Status = new QueryStatusHistory();
         }
 
         /// <summary>
         /// Gets or sets the active scraper.
         /// </summary>
         /// <value>The active scraper.</value>
-        public string ActiveScraper { get; set; }
+        public string ActiveScraper { get; init; }
 
         /// <summary>
         /// Gets or sets the g maps search link.
         /// </summary>
         /// <value>The g maps search link.</value>
-        public string GMapsSearchLink { get; set; }
+        public string GMapsSearchLink { get; init; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is instant query.
         /// </summary>
         /// <value><c>true</c> if this instance is instant query; otherwise, <c>false</c>.</value>
-        public bool IsInstantQuery { get; set; }
+        public bool IsInstantQuery { get; init; }
 
         /// <summary>
         /// Gets or sets the raw query.
         /// </summary>
         /// <value>The raw query.</value>
-        public string RawQuery { get; set; }
+        public string RawQuery { get; init; }
 
         /// <summary>
         /// Gets the status.
@@ -97,7 +96,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets or sets the tenant identifier.
         /// </summary>
         /// <value>The tenant identifier.</value>
-        public Guid TenantId { get; set; }
+        public Guid TenantId { get; init; }
 
         /// <summary>
         /// Gets the atomic values.
