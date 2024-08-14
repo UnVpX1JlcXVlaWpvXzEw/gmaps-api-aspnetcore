@@ -15,7 +15,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="GMapsMagicianAPI.Domain.SeedWork.EntityBase"/>
+    /// <seealso cref="EntityBase"/>
     public class QueryResult : EntityBase
     {
         /// <summary>
@@ -31,7 +31,6 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         internal QueryResult(string link, DateTime scrapingConclusionDate)
         {
             this.Link = link;
-            this.ScrapingConclusionDate = scrapingConclusionDate;
         }
 
         /// <summary>
@@ -41,6 +40,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
             : base()
         {
             this.queryResultStatusHistories = new List<QueryResultStatusHistory>();
+            this.Status = new QueryResultStatus();
         }
 
         /// <summary>
@@ -48,12 +48,6 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// </summary>
         /// <value>The link.</value>
         public string Link { get; init; }
-
-        /// <summary>
-        /// Gets the scraping conclusion date.
-        /// </summary>
-        /// <value>The scraping conclusion date.</value>
-        public DateTime ScrapingConclusionDate { get; init; }
 
         /// <summary>
         /// Gets the status.
