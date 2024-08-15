@@ -24,10 +24,9 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Initializes a new instance of the <see cref="QueryResultStatusHistory"/> class.
         /// </summary>
         /// <param name="scrapingConclusionDate">The scraping conclusion date.</param>
-        internal QueryResultStatusHistory(QueryResultStatus status, DateTime scrapingConclusionDate)
+        internal QueryResultStatusHistory(DateTime scrapingConclusionDate)
         {
             this.ScrapingConclusionDate = scrapingConclusionDate;
-            this.Status = status;
         }
 
         /// <summary>

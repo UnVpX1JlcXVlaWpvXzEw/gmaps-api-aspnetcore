@@ -38,14 +38,11 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <param name="tenantId">The tenant identifier.</param>
         /// <param name="activeScraper">The active scraper.</param>
         /// <param name="isInstant">if set to <c>true</c> [is instant query].</param>
-        internal Query(string rawQuery, string gMapsSearchLink, Guid tenantId, string activeScraper, bool isInstant)
+        internal Query(string rawQuery, Guid tenantId)
             : this()
         {
             this.RawQuery = rawQuery;
-            this.GMapsSearchLink = gMapsSearchLink;
             this.TenantId = tenantId;
-            this.ActiveScraper = activeScraper;
-            this.IsInstant = isInstant;
         }
 
         /// <summary>
@@ -62,19 +59,19 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets or sets the active scraper.
         /// </summary>
         /// <value>The active scraper.</value>
-        public string ActiveScraper { get; init; }
+        public string ActiveScraper { get; private set; }
 
         /// <summary>
         /// Gets or sets the g maps search link.
         /// </summary>
         /// <value>The g maps search link.</value>
-        public string GMapsSearchLink { get; init; }
+        public string GMapsSearchLink { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is instant query.
         /// </summary>
         /// <value><c>true</c> if this instance is instant query; otherwise, <c>false</c>.</value>
-        public bool IsInstant { get; init; }
+        public bool IsInstant { get; private set; }
 
         /// <summary>
         /// Gets the query results.
@@ -92,7 +89,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets the status.
         /// </summary>
         /// <value>The status.</value>
-        public QueryStatusHistory Status { get; init; }
+        public QueryStatusHistory Status { get; private set; }
 
         /// <summary>
         /// Gets the status history.

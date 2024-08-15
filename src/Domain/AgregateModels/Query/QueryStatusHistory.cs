@@ -23,10 +23,9 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query.Enums
         /// </summary>
         /// <param name="status">The status.</param>
         /// <param name="scrapingConclusionDate">The scraping conclusion date.</param>
-        internal QueryStatusHistory(QueryStatus status, DateTime scrapingConclusionDate)
+        internal QueryStatusHistory(DateTime scrapingConclusionDate)
         {
             this.ScrapingConclusionDate = scrapingConclusionDate;
-            this.Status = status;
         }
 
         /// <summary>
