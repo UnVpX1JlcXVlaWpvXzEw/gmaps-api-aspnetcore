@@ -10,19 +10,24 @@
 namespace GMapsMagicianAPI.Domain.AgregateModels.Query
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
+    using GMapsMagicianAPI.Domain.SeedWork;
+    using System.Collections.Generic;
 
     /// <summary>
     /// <see cref="QueryResultStatusHistory"/>
     /// </summary>
-    public class QueryResultStatusHistory
+    /// ///
+    /// <seealso cref="EntityBase"/>
+    public class QueryResultStatusHistory : EntityBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryResultStatusHistory"/> class.
         /// </summary>
         /// <param name="scrapingConclusionDate">The scraping conclusion date.</param>
-        internal QueryResultStatusHistory(DateTime scrapingConclusionDate)
+        internal QueryResultStatusHistory(QueryResultStatus status, DateTime scrapingConclusionDate)
         {
             this.ScrapingConclusionDate = scrapingConclusionDate;
+            this.Status = status;
         }
 
         /// <summary>
@@ -36,5 +41,10 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// </summary>
         /// <value>The status.</value>
         public QueryResultStatus Status { get; init; }
+
+        protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return this.UUId;
+        }
     }
 }

@@ -18,9 +18,15 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query.Enums
     /// <seealso cref="EntityBase"/>
     public class QueryStatusHistory : EntityBase
     {
-        internal QueryStatusHistory(string link, DateTime scrapingConclusionDate)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryStatusHistory"/> class.
+        /// </summary>
+        /// <param name="status">The status.</param>
+        /// <param name="scrapingConclusionDate">The scraping conclusion date.</param>
+        internal QueryStatusHistory(QueryStatus status, DateTime scrapingConclusionDate)
         {
             this.ScrapingConclusionDate = scrapingConclusionDate;
+            this.Status = status;
         }
 
         /// <summary>

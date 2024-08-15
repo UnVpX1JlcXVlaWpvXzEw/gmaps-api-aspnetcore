@@ -14,21 +14,22 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
     using System.Collections.Generic;
 
     /// <summary>
+    /// <see cref="QueryResult"/>
     /// </summary>
     /// <seealso cref="EntityBase"/>
     public class QueryResult : EntityBase
     {
         /// <summary>
-        /// The query result status histories
+        /// The result status histories
         /// </summary>
-        private readonly List<QueryResultStatusHistory> queryResultStatusHistories;
+        private readonly List<QueryResultStatusHistory> resultStatusHistory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryResult"/> class.
         /// </summary>
         /// <param name="link">The link.</param>
-        /// <param name="scrapingConclusionDate">The scraping conclusion date.</param>
-        internal QueryResult(string link, DateTime scrapingConclusionDate)
+        internal QueryResult(string link)
+            : this()
         {
             this.Link = link;
         }
@@ -39,7 +40,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         protected QueryResult()
             : base()
         {
-            this.queryResultStatusHistories = new List<QueryResultStatusHistory>();
+            this.resultStatusHistory = new List<QueryResultStatusHistory>();
         }
 
         /// <summary>
@@ -47,6 +48,12 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// </summary>
         /// <value>The link.</value>
         public string Link { get; init; }
+
+        /// <summary>
+        /// Gets the result status history.
+        /// </summary>
+        /// <value>The result status history.</value>
+        public virtual IReadOnlyCollection<QueryResultStatusHistory> ResultStatusHistory => this.resultStatusHistory;
 
         /// <summary>
         /// Gets the status.

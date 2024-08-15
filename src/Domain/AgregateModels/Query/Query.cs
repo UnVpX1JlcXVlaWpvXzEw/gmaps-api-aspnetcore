@@ -21,18 +21,14 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
     public class Query : EntityBase, IAggregateRoot
     {
         /// <summary>
-        /// The query results
+        /// The results
         /// </summary>
-        private readonly List<QueryResult> queryResults;
+        private readonly List<QueryResult> results;
 
         /// <summary>
-        /// The query result status histories
+        /// The status history
         /// </summary>
-
-        /// <summary>
-        /// The query status histories
-        /// </summary>
-        private readonly List<QueryStatusHistory> queryStatusHistories;
+        private readonly List<QueryStatusHistory> statusHistory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Query"/> class.
@@ -41,15 +37,15 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <param name="gMapsSearchLink">The g maps search link.</param>
         /// <param name="tenantId">The tenant identifier.</param>
         /// <param name="activeScraper">The active scraper.</param>
-        /// <param name="isInstantQuery">if set to <c>true</c> [is instant query].</param>
-        internal Query(string rawQuery, string gMapsSearchLink, Guid tenantId, string activeScraper, bool isInstantQuery)
+        /// <param name="isInstant">if set to <c>true</c> [is instant query].</param>
+        internal Query(string rawQuery, string gMapsSearchLink, Guid tenantId, string activeScraper, bool isInstant)
             : this()
         {
             this.RawQuery = rawQuery;
             this.GMapsSearchLink = gMapsSearchLink;
             this.TenantId = tenantId;
             this.ActiveScraper = activeScraper;
-            this.IsInstantQuery = isInstantQuery;
+            this.IsInstant = isInstant;
         }
 
         /// <summary>
@@ -58,8 +54,8 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         protected Query()
             : base()
         {
-            this.queryResults = new List<QueryResult>();
-            this.queryStatusHistories = new List<QueryStatusHistory>();
+            this.results = new List<QueryResult>();
+            this.statusHistory = new List<QueryStatusHistory>();
         }
 
         /// <summary>
@@ -78,7 +74,13 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets or sets a value indicating whether this instance is instant query.
         /// </summary>
         /// <value><c>true</c> if this instance is instant query; otherwise, <c>false</c>.</value>
-        public bool IsInstantQuery { get; init; }
+        public bool IsInstant { get; init; }
+
+        /// <summary>
+        /// Gets the query results.
+        /// </summary>
+        /// <value>The query results.</value>
+        public virtual IReadOnlyCollection<QueryResult> QueryResults => this.results;
 
         /// <summary>
         /// Gets or sets the raw query.
@@ -91,6 +93,12 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// </summary>
         /// <value>The status.</value>
         public QueryStatusHistory Status { get; init; }
+
+        /// <summary>
+        /// Gets the status history.
+        /// </summary>
+        /// <value>The status history.</value>
+        public virtual IReadOnlyCollection<QueryStatusHistory> StatusHistory => this.statusHistory;
 
         /// <summary>
         /// Gets or sets the tenant identifier.
