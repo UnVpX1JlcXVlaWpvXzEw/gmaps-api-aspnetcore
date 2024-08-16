@@ -9,6 +9,8 @@
 
 namespace GMapsMagicianAPI.Infrastructure.Configuration
 {
+    using GMapsMagicianAPI.Domain.AgregateModels.Repository;
+    using GMapsMagicianAPI.Infrastructure.Repository;
     using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
@@ -22,6 +24,13 @@ namespace GMapsMagicianAPI.Infrastructure.Configuration
         /// <param name="services">The services.</param>
         public static void RegisterInfrastructureServices(this IServiceCollection services)
         {
+            services.AddTransient<IQueryRepository, QueryRepository>();
+
+            services.AddTransient<IQueryResultRepository, QueryResultRepository>();
+
+            services.AddTransient<IQueryResultStatusHistoryRepository, QueryResultStatusHistoryRepository>();
+
+            services.AddTransient<IQueryStatusHistoryRepository, QueryStatusHistoryRepository>();
         }
     }
 }
