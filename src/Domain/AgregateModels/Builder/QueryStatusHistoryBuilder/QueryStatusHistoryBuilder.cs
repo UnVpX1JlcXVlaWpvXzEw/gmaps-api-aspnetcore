@@ -5,7 +5,7 @@
 // <summary>
 // QueryStatusHistoryBuilder
 // </summary>
-// ----------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryStatusHistoryBuilder
 {
@@ -14,7 +14,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryStatusHistoryBuild
     /// <summary>
     /// <see cref="QueryStatusHistoryBuilder"/>
     /// </summary>
-    /// <seealso cref="QueryStatusHistoryBuilder.IQueryStatusHistoryBuilder"/>
+    /// <seealso cref="IQueryStatusHistoryBuilder"/>
     internal class QueryStatusHistoryBuilder : IQueryStatusHistoryBuilder
     {
         /// <summary>

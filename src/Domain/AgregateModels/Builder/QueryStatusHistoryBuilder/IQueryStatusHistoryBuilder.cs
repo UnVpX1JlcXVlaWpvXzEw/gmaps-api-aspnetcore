@@ -1,4 +1,13 @@
-﻿namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryStatusHistoryBuilder
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IQueryStatusHistoryBuilder.cs" company="ApexAlgorithms">
+//     Copyright (c) ApexAlgorithms. All rights reserved.
+// </copyright>
+// <summary>
+// IQueryStatusHistoryBuilder
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryStatusHistoryBuilder
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
     using System;

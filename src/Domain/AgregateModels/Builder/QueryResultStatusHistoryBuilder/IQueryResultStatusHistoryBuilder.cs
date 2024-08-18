@@ -1,4 +1,13 @@
-﻿namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultStatusHistory
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IQueryResultStatusHistory.cs" company="ApexAlgorithms">
+//     Copyright (c) ApexAlgorithms. All rights reserved.
+// </copyright>
+// <summary>
+// IQueryResultStatusHistory
+// </summary>
+// ----------------------------------------------------------------------------------------------------------------
+
+namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultStatusHistory
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using System;

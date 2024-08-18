@@ -5,7 +5,7 @@
 // <summary>
 // QueryBuilder
 // </summary>
-// ----------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder
 {
@@ -32,7 +32,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder
         {
             if (query is null)
             {
-                throw new InvalidOperationException("The query object is not initialized");
+                throw new InvalidOperationException("The query object is not initialized.");
             }
 
             return query;
@@ -47,6 +47,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder
         public IQueryBuilder NewQuery(string rawQuery, Guid tenantId)
         {
             query = new(rawQuery, tenantId);
+
             return this;
         }
     }

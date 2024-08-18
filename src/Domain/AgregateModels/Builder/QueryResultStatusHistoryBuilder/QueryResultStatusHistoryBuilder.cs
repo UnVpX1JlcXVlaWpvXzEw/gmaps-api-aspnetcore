@@ -5,7 +5,7 @@
 // <summary>
 // QueryResultStatusHistory
 // </summary>
-// ----------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultStatusHistory
 {
