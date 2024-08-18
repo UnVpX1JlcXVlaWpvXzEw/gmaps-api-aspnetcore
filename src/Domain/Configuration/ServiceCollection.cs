@@ -9,6 +9,10 @@
 
 namespace GMapsMagicianAPI.Domain.Configuration
 {
+    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
+    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder;
+    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultStatusHistory;
+    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryStatusHistoryBuilder;
     using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
@@ -22,6 +26,13 @@ namespace GMapsMagicianAPI.Domain.Configuration
         /// <param name="services">The services.</param>
         public static void RegisterDomainServices(this IServiceCollection services)
         {
+            services.AddTransient<IQueryBuilder, QueryBuilder>();
+
+            services.AddTransient<IQueryResultBuilder, QueryResultBuilder>();
+
+            services.AddTransient<IQueryResultStatusHistoryBuilder, QueryResultStatusHistoryBuilder>();
+
+            services.AddTransient<IQueryStatusHistoryBuilder, QueryStatusHistoryBuilder>();
         }
     }
 }
