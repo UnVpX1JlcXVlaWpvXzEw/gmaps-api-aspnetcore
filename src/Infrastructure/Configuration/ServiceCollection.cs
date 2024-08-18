@@ -24,13 +24,13 @@ namespace GMapsMagicianAPI.Infrastructure.Configuration
         /// <param name="services">The services.</param>
         public static void RegisterInfrastructureServices(this IServiceCollection services)
         {
-            services.AddTransient<IQueryRepository, QueryRepository>();
+            services.AddScoped<IQueryRepository, QueryRepository>();
 
-            services.AddTransient<IQueryResultRepository, QueryResultRepository>();
+            services.AddScoped<IQueryResultRepository, QueryResultRepository>();
 
-            services.AddTransient<IQueryResultStatusHistoryRepository, QueryResultStatusHistoryRepository>();
+            services.AddScoped<IQueryResultStatusHistoryRepository, QueryResultStatusHistoryRepository>();
 
-            services.AddTransient<IQueryStatusHistoryRepository, QueryStatusHistoryRepository>();
+            services.AddScoped<IQueryStatusHistoryRepository, QueryStatusHistoryRepository>();
         }
     }
 }
