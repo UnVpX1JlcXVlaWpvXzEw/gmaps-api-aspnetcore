@@ -23,7 +23,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <summary>
         /// The results
         /// </summary>
-        private readonly List<QueryResult> results;
+        private readonly List<QueryResult> queryResults;
 
         /// <summary>
         /// The status history
@@ -51,7 +51,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         protected Query()
             : base()
         {
-            this.results = new List<QueryResult>();
+            this.queryResults = new List<QueryResult>();
             this.statusHistory = new List<QueryStatusHistory>();
         }
 
@@ -77,7 +77,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets the query results.
         /// </summary>
         /// <value>The query results.</value>
-        public virtual IReadOnlyCollection<QueryResult> QueryResults => this.results;
+        public virtual IReadOnlyCollection<QueryResult> QueryResults => this.queryResults;
 
         /// <summary>
         /// Gets or sets the raw query.

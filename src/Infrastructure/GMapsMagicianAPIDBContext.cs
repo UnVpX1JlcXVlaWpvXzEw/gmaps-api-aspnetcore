@@ -10,6 +10,7 @@
 namespace GMapsMagicianAPI.Infrastructure
 {
     using GMapsMagicianAPI.Domain.SeedWork;
+    using GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -133,6 +134,19 @@ namespace GMapsMagicianAPI.Infrastructure
         /// </remarks>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new QueryEntityTipeConfiguration());
+            modelBuilder.ApplyConfiguration(new QueryResultEntityTipeConfiguration());
+            modelBuilder.ApplyConfiguration(new QueryResultStatusHistoryEntityTipeConfiguration());
+            modelBuilder.ApplyConfiguration(new QueryStatusHistoryEntityTipeConfiguration());
+
+            var properties = modelBuilder.Model.GetEntityTypes()
+                .SelectMany(t => t.GetProperties())
+                .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?));
+
+            foreach (var property in properties)
+            {
+                property.SetColumnType("decimal(18,5)");
+            }
         }
 
         /// <summary>
