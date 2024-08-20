@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QUeryEnttyTipeConfiguration.cs" company="ApexAlgorithms">
+// <copyright file="QueryEnttyTipeConfiguration.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// QUeryEnttyTipeConfiguration
+// QueryEnttyTipeConfiguration
 // </summary>
 // ----------------------------------------------------------------------------------------------------------------
 
@@ -16,6 +16,7 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     /// <summary>
+    /// <see cref="EntityTypeConfiguration"/>
     /// </summary>
     /// <seealso cref="EntityTypeConfiguration{Query}"/>
     internal class QueryEntityTipeConfiguration : EntityTypeConfiguration<Query>
@@ -33,11 +34,11 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
         protected override void ConfigureEntity(EntityTypeBuilder<Query> builder)
         {
             builder.Property(e => e.RawQuery)
-                .HasMaxLength(100)
+                .HasMaxLength(250)
                 .IsRequired();
 
             builder.Property(e => e.GMapsSearchLink)
-                .HasMaxLength(100)
+                .HasMaxLength(500)
                 .IsRequired();
 
             builder.Property(e => e.TenantId)
@@ -48,13 +49,14 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
                 .IsRequired();
 
             builder.Property(e => e.IsInstant)
+                .HasDefaultValue(true)
                 .IsRequired();
 
             builder.Property(e => e.Status)
                 .HasConversion(x =>
                 x.ToString(), v =>
                 (QueryStatusHistory)Enum.Parse(typeof(QueryStatusHistory), v))
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.HasMany(e => e.StatusHistory)

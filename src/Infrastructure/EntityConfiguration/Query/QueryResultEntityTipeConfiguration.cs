@@ -33,14 +33,14 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
         protected override void ConfigureEntity(EntityTypeBuilder<QueryResult> builder)
         {
             builder.Property(e => e.Link)
-                .HasMaxLength(100)
+                .HasMaxLength(500)
                 .IsRequired();
 
             builder.Property(e => e.Status)
                 .HasConversion(x =>
                 x.ToString(), v =>
                 (QueryResultStatus)Enum.Parse(typeof(QueryResult), v))
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
         }
     }
