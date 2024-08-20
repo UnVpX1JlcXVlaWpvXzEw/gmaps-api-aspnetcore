@@ -82,11 +82,13 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
 
                     b.Property<string>("GMapsSearchLink")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<bool>("IsInstant")
-                        .HasColumnType("tinyint(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<DateTime>("ModificationDate")
                         .IsConcurrencyToken()
@@ -94,13 +96,13 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
 
                     b.Property<string>("RawQuery")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<Guid>("TenantId")
                         .HasColumnType("char(36)");
@@ -129,8 +131,8 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
 
                     b.Property<string>("Link")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<DateTime>("ModificationDate")
                         .IsConcurrencyToken()
@@ -141,8 +143,8 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<Guid>("UUId")
                         .HasColumnType("char(36)");
@@ -180,8 +182,8 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<Guid>("UUId")
                         .HasColumnType("char(36)");

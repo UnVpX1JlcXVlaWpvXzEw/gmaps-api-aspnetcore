@@ -36,7 +36,7 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
                 .HasConversion(x =>
                 x.ToString(), v =>
                 (QueryResultStatus)Enum.Parse(typeof(QueryResultStatus), v))
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(e => e.ScrapingConclusionDate)
