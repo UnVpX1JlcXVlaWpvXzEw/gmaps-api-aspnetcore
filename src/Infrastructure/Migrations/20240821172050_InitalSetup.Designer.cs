@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMapsMagicianAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(GMapsMagicianAPIDBContext))]
-    [Migration("20240819165644_InicialSetup")]
-    partial class InicialSetup
+    [Migration("20240821172050_InitalSetup")]
+    partial class InitalSetup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

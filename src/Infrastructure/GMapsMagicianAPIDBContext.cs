@@ -136,8 +136,8 @@ namespace GMapsMagicianAPI.Infrastructure
         {
             modelBuilder.ApplyConfiguration(new QueryEntityTipeConfiguration());
             modelBuilder.ApplyConfiguration(new QueryResultEntityTipeConfiguration());
-            modelBuilder.ApplyConfiguration(new QueryResultStatusHistoryEntityTipeConfiguration());
-            modelBuilder.ApplyConfiguration(new QueryStatusHistoryEntityTipeConfiguration());
+            modelBuilder.ApplyConfiguration(new QueryResultStatusHistoryEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new QueryStatusHistoryEntityTypeConfiguration());
 
             var properties = modelBuilder.Model.GetEntityTypes()
                 .SelectMany(t => t.GetProperties())

@@ -55,7 +55,7 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
             builder.Property(e => e.Status)
                 .HasConversion(x =>
                 x.ToString(), v =>
-                (QueryStatusHistory)Enum.Parse(typeof(QueryStatusHistory), v))
+                (QueryStatus)Enum.Parse(typeof(QueryStatus), v))
                 .HasMaxLength(50)
                 .IsRequired();
 

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GMapsMagicianAPI.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InicialSetup : Migration
+    public partial class InitalSetup : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -11,6 +11,10 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
+    using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// <see cref="QueryRepository"/>
@@ -26,6 +30,12 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         public QueryRepository(GMapsMagicianAPIDBContext context)
             : base(context)
         {
+        }
+
+        public async Task<IEnumerable<Query>> GetByTenantIdAsync(Guid tenantId, CancellationToken cancellationToken)
+        {
+            return await this.Entities.Where(x => x.TenantId == tenantId)
+                .ToListAsync(cancellationToken);
         }
     }
 }
