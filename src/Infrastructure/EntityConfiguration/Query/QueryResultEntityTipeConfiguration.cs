@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QueryResultsEntityTipeConfiguration.cs" company="ApexAlgorithms">
+// <copyright file="QueryResultsEntityTypeConfiguration.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// QueryResultsEntityTipeConfiguration
+// QueryResultsEntityTypeConfiguration
 // </summary>
 // ----------------------------------------------------------------------------------------------------------------
 
@@ -39,7 +39,7 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
             builder.Property(e => e.Status)
                 .HasConversion(x =>
                 x.ToString(), v =>
-                (QueryResultStatus)Enum.Parse(typeof(QueryResult), v))
+                (QueryResultStatus)Enum.Parse(typeof(QueryResultStatus), v))
                 .HasMaxLength(50)
                 .IsRequired();
         }

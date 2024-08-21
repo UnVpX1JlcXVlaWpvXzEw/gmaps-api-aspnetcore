@@ -89,7 +89,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets the status.
         /// </summary>
         /// <value>The status.</value>
-        public QueryStatusHistory Status { get; private set; }
+        public QueryStatus Status { get; private set; }
 
         /// <summary>
         /// Gets the status history.
