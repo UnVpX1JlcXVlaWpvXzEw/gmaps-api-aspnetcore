@@ -27,7 +27,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query
         /// Gets the gmaps search link.
         /// </summary>
         /// <value>The gmaps search link.</value>
-        public string GmapsSearchLink { get; init; }
+        public string GMapsSearchLink { get; init; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is instant query.

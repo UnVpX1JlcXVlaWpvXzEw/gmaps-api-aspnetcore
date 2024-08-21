@@ -24,7 +24,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
     /// </summary>
     /// <seealso cref="Controller"/>
     [ApiController]
-    [Route("api/v1/Newsletter")]
+    [Route("api/v1/Query")]
     public class QueryController : Controller
     {
         /// <summary>

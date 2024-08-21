@@ -32,6 +32,12 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         {
         }
 
+        /// <summary>
+        /// Gets the by tenant identifier asynchronous.
+        /// </summary>
+        /// <param name="tenantId">The tenant identifier.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
         public async Task<IEnumerable<Query>> GetByTenantIdAsync(Guid tenantId, CancellationToken cancellationToken)
         {
             return await this.Entities.Where(x => x.TenantId == tenantId)
