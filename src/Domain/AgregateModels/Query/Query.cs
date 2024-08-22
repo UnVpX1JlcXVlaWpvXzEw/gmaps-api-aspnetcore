@@ -56,16 +56,16 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         }
 
         /// <summary>
-        /// Gets or sets the active scraper.
+        /// Gets the active scraper.
         /// </summary>
         /// <value>The active scraper.</value>
-        public string ActiveScraper { get; private set; }
+        public string? ActiveScraper { get; private set; }
 
         /// <summary>
-        /// Gets or sets the g maps search link.
+        /// Gets the g maps search link.
         /// </summary>
         /// <value>The g maps search link.</value>
-        public string GMapsSearchLink { get; private set; }
+        public string? GMapsSearchLink { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is instant query.

@@ -21,5 +21,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Repository
     public interface IQueryRepository : IRepository<Query>
     {
         Task<IEnumerable<Query>> GetByTenantIdAsync(Guid tenantId, CancellationToken cancellationToken);
+
+        Task<Query> GetDuplicatedByFiltersAsync(string rawQuery, Guid tenantId, CancellationToken cancellationToken);
     }
 }

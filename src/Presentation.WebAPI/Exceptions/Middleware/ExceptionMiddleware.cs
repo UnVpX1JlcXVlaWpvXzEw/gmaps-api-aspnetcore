@@ -110,7 +110,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Exceptions.Middleware
         /// </summary>
         private void MapExceptionsAndCodes()
         {
-            this.exceptionCodes.Add(typeof(Domain.Exceptions.NotFoundException), HttpStatusCode.NotFound);
+            this.exceptionCodes.Add(typeof(NotFoundException), HttpStatusCode.NotFound);
             this.exceptionCodes.Add(typeof(DuplicatedException), HttpStatusCode.BadRequest);
         }
     }

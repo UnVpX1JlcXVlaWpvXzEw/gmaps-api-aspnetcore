@@ -38,15 +38,13 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
                 .IsRequired();
 
             builder.Property(e => e.GMapsSearchLink)
-                .HasMaxLength(500)
-                .IsRequired();
+                .HasMaxLength(500);
 
             builder.Property(e => e.TenantId)
                 .IsRequired();
 
             builder.Property(e => e.ActiveScraper)
-                .HasMaxLength(100)
-                .IsRequired();
+                .HasMaxLength(100);
 
             builder.Property(e => e.IsInstant)
                 .HasDefaultValue(true)
