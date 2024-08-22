@@ -11,7 +11,8 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
 {
     using AutoMapper;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
-    using GMapsMagicianAPI.Presentation.WebAPI.Commands.Query;
+    using GMapsMagicianAPI.Presentation.WebAPI.Commands.CreateQueryCommand;
+    using GMapsMagicianAPI.Presentation.WebAPI.Commands.DeleteQueryCommand;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Queries.Query;
@@ -70,6 +71,27 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
             }, cancellationToken);
 
             return this.Created(string.Empty, this.mapper.Map<QueryDetailsDto>(query));
+        }
+
+        /// <summary>
+        /// Deletes the query asynchronous.
+        /// </summary>
+        /// <param name="filter">The filter.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        [HttpDelete("{Uuid}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> DeleteQueryAsync([FromRoute] DeleteQueryDto filter, CancellationToken cancellationToken)
+        {
+            await this.mediator.Publish(new DeleteQueryCommand
+            {
+                Uuid = filter.Uuid
+            }, cancellationToken);
+
+            return this.Ok();
         }
 
         /// <summary>
