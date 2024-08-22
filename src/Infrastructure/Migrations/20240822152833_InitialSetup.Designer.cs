@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMapsMagicianAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(GMapsMagicianAPIDBContext))]
-    [Migration("20240821172050_InitalSetup")]
-    partial class InitalSetup
+    [Migration("20240822152833_InitialSetup")]
+    partial class InitialSetup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,6 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("ActiveScraper")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
@@ -84,7 +83,6 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("GMapsSearchLink")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 

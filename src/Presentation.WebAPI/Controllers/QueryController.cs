@@ -11,6 +11,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
 {
     using AutoMapper;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
+    using GMapsMagicianAPI.Presentation.WebAPI.Commands.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Queries.Query;
@@ -48,6 +49,27 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
         {
             this.mapper = mapper;
             this.mediator = mediator;
+        }
+
+        /// <summary>
+        /// Creates the query asynchronous.
+        /// </summary>
+        /// <param name="queryDto">The query dto.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        [HttpPost]
+        [ProducesResponseType(typeof(QueryDetailsDto), (int)HttpStatusCode.Created)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> CreateQueryAsync([FromBody] CreateQueryDto queryDto, CancellationToken cancellationToken)
+        {
+            Query query = await this.mediator.Send(new CreateQueryCommand
+            {
+                RawQuery = queryDto.RawQuery,
+                TenantId = queryDto.TenantId
+            }, cancellationToken);
+
+            return this.Created(string.Empty, this.mapper.Map<QueryDetailsDto>(query));
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
+    using GMapsMagicianAPI.Infrastructure;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading;
@@ -42,6 +43,12 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         {
             return await this.Entities.Where(x => x.TenantId == tenantId)
                 .ToListAsync(cancellationToken);
+        }
+
+        public async Task<Query> GetDuplicatedByFiltersAsync(string rawQuery, Guid tenantId, CancellationToken cancellationToken)
+        {
+            return await this.Entities.SingleOrDefaultAsync(x => x.RawQuery == rawQuery
+            && x.TenantId == tenantId, cancellationToken);
         }
     }
 }

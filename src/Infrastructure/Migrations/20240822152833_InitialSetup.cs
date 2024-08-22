@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GMapsMagicianAPI.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalSetup : Migration
+    public partial class InitialSetup : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,9 +21,9 @@ namespace GMapsMagicianAPI.Infrastructure.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ActiveScraper = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                    ActiveScraper = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    GMapsSearchLink = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                    GMapsSearchLink = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsInstant = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true),
                     RawQuery = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: false)
