@@ -55,24 +55,17 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.Query
         /// </exception>
         public async Task<Query> Handle(CreateQueryCommand request, CancellationToken cancellationToken)
         {
-            Query query = await this.queryRepository.GetDuplicatedByFiltersAsync(request.RawQuery,
-                request.TenantId,
-                cancellationToken);
-
-            if (query is not null)
-            {
-                throw new DuplicatedException($"The Query with RawQuery {request.RawQuery} and tenantId {request.TenantId} already exists.");
-            }
-
-            Query newQuery = this.queryBuilder
-                .NewQuery(request.RawQuery, request.TenantId)
+            Query query = this.queryBuilder
+                .NewQuery(
+                request.RawQuery,
+                request.TenantId)
                 .Build();
 
-            await this.queryRepository.Update(newQuery, cancellationToken);
+            await this.queryRepository.AddAsync(query, cancellationToken);
 
             await this.queryRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
 
-            return newQuery;
+            return query;
         }
     }
 }

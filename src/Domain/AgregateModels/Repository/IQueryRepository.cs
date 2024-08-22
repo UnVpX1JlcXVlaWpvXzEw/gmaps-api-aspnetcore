@@ -18,10 +18,23 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Repository
     /// <summary>
     /// <see cref="IQueryRepository"/>
     /// </summary>
+    /// <seealso cref="IRepository{Query}"/>
     public interface IQueryRepository : IRepository<Query>
     {
+        /// <summary>
+        /// Gets the by tenant identifier asynchronous.
+        /// </summary>
+        /// <param name="tenantId">The tenant identifier.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
         Task<IEnumerable<Query>> GetByTenantIdAsync(Guid tenantId, CancellationToken cancellationToken);
 
-        Task<Query> GetDuplicatedByFiltersAsync(string rawQuery, Guid tenantId, CancellationToken cancellationToken);
+        /// <summary>
+        /// Gets the duplicated by filters asynchronous.
+        /// </summary>
+        /// <param name="rawQuery">The raw query.</param>
+        /// <param name="tenantId">The tenant identifier.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
     }
 }

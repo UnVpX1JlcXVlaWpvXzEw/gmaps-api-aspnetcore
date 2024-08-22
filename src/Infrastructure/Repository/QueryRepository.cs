@@ -41,14 +41,18 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         /// <returns></returns>
         public async Task<IEnumerable<Query>> GetByTenantIdAsync(Guid tenantId, CancellationToken cancellationToken)
         {
-            return await this.Entities.Where(x => x.TenantId == tenantId)
+            return await this.Entities
+                .Where(x =>
+                x.TenantId == tenantId)
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<Query> GetDuplicatedByFiltersAsync(string rawQuery, Guid tenantId, CancellationToken cancellationToken)
-        {
-            return await this.Entities.SingleOrDefaultAsync(x => x.RawQuery == rawQuery
-            && x.TenantId == tenantId, cancellationToken);
-        }
+        /// <summary>
+        /// Gets the duplicated by filters asynchronous.
+        /// </summary>
+        /// <param name="rawQuery">The raw query.</param>
+        /// <param name="tenantId">The tenant identifier.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
     }
 }

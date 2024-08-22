@@ -19,12 +19,6 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.Query
     public class CreateQueryCommand : IRequest<Query>
     {
         /// <summary>
-        /// Gets the g maps search link.
-        /// </summary>
-        /// <value>The g maps search link.</value>
-        public string GMapsSearchLink { get; init; }
-
-        /// <summary>
         /// Gets the raw query.
         /// </summary>
         /// <value>The raw query.</value>
