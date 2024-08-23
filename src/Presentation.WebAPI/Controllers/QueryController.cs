@@ -13,6 +13,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Commands.CreateQueryCommand;
     using GMapsMagicianAPI.Presentation.WebAPI.Commands.DeleteQueryCommand;
+    using GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand;
     using GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
@@ -93,6 +94,27 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
             }, cancellationToken);
 
             return this.Ok();
+        }
+
+        /// <summary>
+        /// Finishes the scrapping asynchronous.
+        /// </summary>
+        /// <param name="filter">The filter.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        [HttpPatch("{Uuid}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> FinishScrappingAsync([FromRoute] FinishScrappingDto filter, CancellationToken cancellationToken)
+        {
+            Query query = await this.mediator.Send(new FinishScrappingCommand
+            {
+                Uuid = filter.Uuid,
+            }, cancellationToken);
+
+            return this.Ok(this.mapper.Map<QueryDetailsDto>(query));
         }
 
         /// <summary>

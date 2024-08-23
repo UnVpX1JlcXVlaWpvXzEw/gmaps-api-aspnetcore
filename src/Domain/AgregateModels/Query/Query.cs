@@ -104,6 +104,14 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         public Guid TenantId { get; init; }
 
         /// <summary>
+        /// Finishes the scrapping.
+        /// </summary>
+        public void FinishScrapping(Guid guid)
+        {
+            Status = QueryStatus.SCRAPED;
+        }
+
+        /// <summary>
         /// Starts the scrapping.
         /// </summary>
         /// <param name="Uuid">The UUID.</param>
