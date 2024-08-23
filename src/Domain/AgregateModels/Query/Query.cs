@@ -103,6 +103,10 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <value>The tenant identifier.</value>
         public Guid TenantId { get; init; }
 
+        /// <summary>
+        /// Starts the scrapping.
+        /// </summary>
+        /// <param name="Uuid">The UUID.</param>
         public void StartScrapping(Guid Uuid)
         {
             this.UUId = Uuid;
