@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.Query
+namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.CreateQueryCommand
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
