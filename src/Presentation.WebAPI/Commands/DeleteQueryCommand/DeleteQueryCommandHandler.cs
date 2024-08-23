@@ -29,8 +29,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.DeleteQueryCommand
         /// Initializes a new instance of the <see cref="DeleteQueryCommandHandler"/> class.
         /// </summary>
         /// <param name="queryRepository">The query repository.</param>
-        public DeleteQueryCommandHandler(
-            IQueryRepository queryRepository)
+        public DeleteQueryCommandHandler(IQueryRepository queryRepository)
         {
             this.queryRepository = queryRepository;
         }
@@ -54,6 +53,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.DeleteQueryCommand
             {
                 throw new NotFoundException($"The query with id {notification.Uuid} wasn't found.");
             }
+
             await this.queryRepository.Remove(query, cancellationToken);
 
             await this.queryRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
