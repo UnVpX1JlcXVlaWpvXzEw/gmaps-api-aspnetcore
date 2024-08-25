@@ -11,6 +11,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
     using GMapsMagicianAPI.Domain.SeedWork;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -102,6 +103,27 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// </summary>
         /// <value>The tenant identifier.</value>
         public Guid TenantId { get; init; }
+
+        /// <summary>
+        /// Finishes the scrapping.
+        /// </summary>
+        public void FinishScrapping(Guid Uuid)
+        {
+            this.UUId = Uuid;
+
+            Status = QueryStatus.SCRAPED;
+        }
+
+        /// <summary>
+        /// Starts the scrapping.
+        /// </summary>
+        /// <param name="Uuid">The UUID.</param>
+        public void StartScrapping(Guid Uuid)
+        {
+            this.UUId = Uuid;
+
+            Status = QueryStatus.SCRAPING;
+        }
 
         /// <summary>
         /// Gets the atomic values.
