@@ -20,7 +20,6 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
     /// </summary>
     /// <seealso cref="IRequestHandler{StartScrappingCommand, Query}"/>
     public class StartScrappingCommandHandler : IRequestHandler<StartScrappingCommand, Query>
-
     {
         /// <summary>
         /// The query repository

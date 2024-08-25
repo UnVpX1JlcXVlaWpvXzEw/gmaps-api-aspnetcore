@@ -11,6 +11,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
     using GMapsMagicianAPI.Domain.SeedWork;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -106,8 +107,10 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <summary>
         /// Finishes the scrapping.
         /// </summary>
-        public void FinishScrapping(Guid guid)
+        public void FinishScrapping(Guid Uuid)
         {
+            this.UUId = Uuid;
+
             Status = QueryStatus.SCRAPED;
         }
 

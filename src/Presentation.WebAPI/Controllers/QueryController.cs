@@ -102,7 +102,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
         /// <param name="filter">The filter.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        [HttpPatch("{Uuid}")]
+        [HttpPatch("QueryId/{Uuid}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]

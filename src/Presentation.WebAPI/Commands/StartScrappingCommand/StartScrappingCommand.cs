@@ -15,7 +15,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
     /// <summary>
     /// <see cref="StartScrappingCommand"/>"/&gt;
     /// </summary>
-    /// <seealso cref="INotification"/>
+    /// <seealso cref="IRequest{Query}"/>
     public class StartScrappingCommand : IRequest<Query>
     {
         /// <summary>

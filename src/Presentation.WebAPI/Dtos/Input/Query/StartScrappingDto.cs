@@ -9,6 +9,9 @@
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query
 {
+    /// <summary>
+    /// <see cref="StartScrappingDto"/>
+    /// </summary>
     public class StartScrappingDto
     {
         /// <summary>

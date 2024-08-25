@@ -15,7 +15,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Validation.Query
     /// <summary>
     /// <see cref="FinishScrappingDtoValidator"/>
     /// </summary>
-    /// <seealso cref="FluentValidation.AbstractValidator&lt;FinishScrappingDto&gt;"/>
+    /// <seealso cref="AbstractValidator{FinishScrappingDto}"/>
     public class FinishScrappingDtoValidator : AbstractValidator<FinishScrappingDto>
     {
         /// <summary>
