@@ -9,7 +9,6 @@
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
 {
-    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
     using GMapsMagicianAPI.Domain.Exceptions;
@@ -31,7 +30,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
         /// </summary>
         /// <param name="queryRepository">The query repository.</param>
         /// <param name="queryBuilder">The query builder.</param>
-        public StartScrappingCommandHandler(IQueryRepository queryRepository, IQueryBuilder queryBuilder)
+        public StartScrappingCommandHandler(IQueryRepository queryRepository)
         {
             this.queryRepository = queryRepository;
         }
@@ -55,7 +54,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
                 throw new NotFoundException($"The query with id {request.Uuid} wasn't found.");
             }
 
-            query.StartScrapping(request.Uuid);
+            query.StartScrapping();
 
             await this.queryRepository.Update(query, cancellationToken);
 

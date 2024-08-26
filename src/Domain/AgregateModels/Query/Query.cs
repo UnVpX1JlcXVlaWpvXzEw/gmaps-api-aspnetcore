@@ -107,10 +107,8 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <summary>
         /// Finishes the scrapping.
         /// </summary>
-        public void FinishScrapping(Guid Uuid)
+        public void FinishScrapping()
         {
-            this.UUId = Uuid;
-
             Status = QueryStatus.SCRAPED;
         }
 
@@ -118,10 +116,8 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Starts the scrapping.
         /// </summary>
         /// <param name="Uuid">The UUID.</param>
-        public void StartScrapping(Guid Uuid)
+        public void StartScrapping()
         {
-            this.UUId = Uuid;
-
             Status = QueryStatus.SCRAPING;
         }
 

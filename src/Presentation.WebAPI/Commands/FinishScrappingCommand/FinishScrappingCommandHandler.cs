@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StartScrappingCommand.cs" company="ApexAlgorithms">
+// <copyright file="FinishScrappingCommandHandler.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
@@ -9,7 +9,6 @@
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
 {
-    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
     using GMapsMagicianAPI.Domain.Exceptions;
@@ -31,7 +30,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         /// </summary>
         /// <param name="queryRepository">The query repository.</param>
         /// <param name="queryBuilder">The query builder.</param>
-        public FinishScrappingCommandHandler(IQueryRepository queryRepository, IQueryBuilder queryBuilder)
+        public FinishScrappingCommandHandler(IQueryRepository queryRepository)
         {
             this.queryRepository = queryRepository;
         }
@@ -55,7 +54,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
                 throw new NotFoundException($"The query with id {request.Uuid} wasn't found.");
             }
 
-            query.FinishScrapping(request.Uuid);
+            query.FinishScrapping();
 
             await this.queryRepository.Update(query, cancellationToken);
 

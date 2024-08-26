@@ -13,7 +13,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
     using MediatR;
 
     /// <summary>
-    /// <see cref="StartScrappingCommand"/>"/&gt;
+    /// <see cref="StartScrappingCommand"/>
     /// </summary>
     /// <seealso cref="IRequest{Query}"/>
     public class StartScrappingCommand : IRequest<Query>
