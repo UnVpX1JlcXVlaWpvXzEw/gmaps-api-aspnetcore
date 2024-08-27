@@ -18,7 +18,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.GetUnscrappedQueryQuery
     /// <summary>
     /// <see cref="GetUnscrappedQueryQueryHandler"/>
     /// </summary>
-    /// <seealso cref="IRequestHandler{GetUnscrappedQueryQuery, {Query}"/>
+    /// <seealso cref="IRequestHandler{GetUnscrappedQueryQuery, Query}"/>
     public class GetUnscrappedQueryQueryHandler : IRequestHandler<GetUnscrappedQueryQuery, Query>
     {
         /// <summary>

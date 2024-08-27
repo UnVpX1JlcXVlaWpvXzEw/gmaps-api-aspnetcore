@@ -54,13 +54,13 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         /// <param name="IsInstant"></param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        public async Task<Query> GetUnscrappedQueryAsync(bool IsInstant, CancellationToken cancellationToken)
+        public async Task<Query> GetUnscrappedQueryAsync(bool isInstant, CancellationToken cancellationToken)
         {
             return await this.Entities
                 .Where(x =>
                     x.Status == QueryStatus.UNSCRAPED &&
                     x.ActiveScraper == null &&
-                    x.IsInstant == IsInstant)
+                    x.IsInstant == isInstant)
                 .FirstOrDefaultAsync(cancellationToken);
         }
     }

@@ -35,6 +35,6 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Repository
         /// <param name="IsInstant">if set to <c>true</c> [is instant].</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        Task<Query> GetUnscrappedQueryAsync(bool IsInstant, CancellationToken cancellationToken);
+        Task<Query> GetUnscrappedQueryAsync(bool isInstant, CancellationToken cancellationToken);
     }
 }
