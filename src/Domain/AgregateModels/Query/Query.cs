@@ -116,9 +116,11 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Starts the scrapping.
         /// </summary>
         /// <param name="Uuid">The UUID.</param>
-        public void StartScrapping()
+        public void StartScrapping(string activeScraper, string gMapsMagician)
         {
-            Status = QueryStatus.SCRAPING;
+            this.Status = QueryStatus.SCRAPING;
+            this.ActiveScraper = activeScraper;
+            this.GMapsSearchLink = gMapsMagician;
         }
 
         /// <summary>

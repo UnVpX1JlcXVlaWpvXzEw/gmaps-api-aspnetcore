@@ -1,18 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StartScrappingDto.cs" company="ApexAlgorithms">
+// <copyright file="StartScrappingRouteDto.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// StartScrappingDto
+// StartScrappingRouteDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query
 {
     /// <summary>
-    /// <see cref="StartScrappingDto"/>
+    /// <see cref="StartScrappingRouteDto"/>
     /// </summary>
-    public class StartScrappingDto
+    public class StartScrappingRouteDto
     {
         /// <summary>
         /// Gets the UUID.

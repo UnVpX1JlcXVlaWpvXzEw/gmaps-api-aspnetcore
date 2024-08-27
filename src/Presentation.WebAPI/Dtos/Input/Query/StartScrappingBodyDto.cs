@@ -1,22 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StartScrappingCommand.cs" company="ApexAlgorithms">
+// <copyright file="StartScrappingBodyDto.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// StartScrappingCommand
+// StartScrappingBodyDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
+namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query
 {
-    using GMapsMagicianAPI.Domain.AgregateModels.Query;
-    using MediatR;
-
     /// <summary>
-    /// <see cref="StartScrappingCommand"/>
+    /// <see cref="StartScrappingBodyDto"/>
     /// </summary>
-    /// <seealso cref="IRequest{Query}"/>
-    public class StartScrappingCommand : IRequest<Query>
+    public class StartScrappingBodyDto
     {
         /// <summary>
         /// Gets the active scrapper.
@@ -29,11 +25,5 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
         /// </summary>
         /// <value>The g maps search link.</value>
         public string GMapsSearchLink { get; init; }
-
-        /// <summary>
-        /// Gets the UUID.
-        /// </summary>
-        /// <value>The UUID.</value>
-        public Guid Uuid { get; init; }
     }
 }

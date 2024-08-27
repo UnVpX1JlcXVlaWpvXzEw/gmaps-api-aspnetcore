@@ -171,11 +171,13 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> StartScrappingAsync([FromQuery] StartScrappingDto filter, CancellationToken cancellationToken)
+        public async Task<IActionResult> StartScrappingAsync([FromRoute] StartScrappingRouteDto routeFilter, [FromBody] StartScrappingBodyDto bodyFilter, CancellationToken cancellationToken)
         {
             Query query = await this.mediator.Send(new StartScrappingCommand
             {
-                Uuid = filter.Uuid,
+                Uuid = routeFilter.Uuid,
+                ActiveScrapper = bodyFilter.ActiveScrapper,
+                GMapsSearchLink = bodyFilter.GMapsSearchLink
             }, cancellationToken);
 
             return this.Ok(this.mapper.Map<QueryDetailsDto>(query));

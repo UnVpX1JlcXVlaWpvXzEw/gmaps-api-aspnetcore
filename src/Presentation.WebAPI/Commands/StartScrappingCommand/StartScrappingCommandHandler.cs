@@ -29,7 +29,6 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
         /// Initializes a new instance of the <see cref="StartScrappingCommandHandler"/> class.
         /// </summary>
         /// <param name="queryRepository">The query repository.</param>
-        /// <param name="queryBuilder">The query builder.</param>
         public StartScrappingCommandHandler(IQueryRepository queryRepository)
         {
             this.queryRepository = queryRepository;
@@ -54,7 +53,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand
                 throw new NotFoundException($"The query with id {request.Uuid} wasn't found.");
             }
 
-            query.StartScrapping();
+            query.StartScrapping(request.ActiveScrapper, request.GMapsSearchLink);
 
             await this.queryRepository.Update(query, cancellationToken);
 
