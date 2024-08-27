@@ -17,7 +17,8 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
     using GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
-    using GMapsMagicianAPI.Presentation.WebAPI.Queries.Query;
+    using GMapsMagicianAPI.Presentation.WebAPI.Queries.GetQueryByTenantIdQuery;
+    using GMapsMagicianAPI.Presentation.WebAPI.Queries.GetUnscrappedQueryQuery;
     using GMapsMagicianAPI.Presentation.WebAPI.Utils;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
@@ -139,6 +140,27 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
         }
 
         /// <summary>
+        /// Gets the unscrapped query asynchronous.
+        /// </summary>
+        /// <param name="filter">The filter.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        [HttpGet("/Unscraped")]
+        [ProducesResponseType(typeof(QueryDetailsDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetUnscrappedQueryAsync([FromQuery] GetUnscrappedQueryDto filter, CancellationToken cancellationToken)
+        {
+            Query query = await this.mediator.Send(new GetUnscrappedQueryQuery
+            {
+                IsInstant = filter.IsInstant
+            }, cancellationToken);
+
+            return this.Ok(this.mapper.Map<QueryDetailsDto>(query));
+        }
+
+        /// <summary>
         /// Starts the scrapping asynchronous.
         /// </summary>
         /// <param name="filter">The filter.</param>
@@ -149,7 +171,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> StartScrappingAsync([FromRoute] StartScrappingDto filter, CancellationToken cancellationToken)
+        public async Task<IActionResult> StartScrappingAsync([FromQuery] StartScrappingDto filter, CancellationToken cancellationToken)
         {
             Query query = await this.mediator.Send(new StartScrappingCommand
             {

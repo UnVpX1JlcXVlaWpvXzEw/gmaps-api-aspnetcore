@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetQueryByTenantIdQueryHandler.cs" company="ApexAlgorithms">
+// <copyright file="GetUnscrappedQueryQueryHandler.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// GetQueryByTenantIdQueryHandler
+// GetUnscrappedQueryQueryHandler
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.Query
+namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.GetUnscrappedQueryQuery
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
@@ -16,10 +16,10 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.Query
     using System.Threading.Tasks;
 
     /// <summary>
-    /// <see cref="GetQueryByTenantIdQueryHandler"/>
+    /// <see cref="GetUnscrappedQueryQueryHandler"/>
     /// </summary>
-    /// <seealso cref="IRequestHandler{GetQueryByTenantIdQuery, IEnumerable{Query}}"/>
-    public class GetQueryByTenantIdQueryHandler : IRequestHandler<GetQueryByTenantIdQuery, IEnumerable<Query>>
+    /// <seealso cref="IRequestHandler{GetUnscrappedQueryQuery, Query}"/>
+    public class GetUnscrappedQueryQueryHandler : IRequestHandler<GetUnscrappedQueryQuery, Query>
     {
         /// <summary>
         /// The query repository
@@ -27,10 +27,10 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.Query
         private readonly IQueryRepository queryRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetQueryByTenantIdQueryHandler"/> class.
+        /// Initializes a new instance of the <see cref="GetUnscrappedQueryQueryHandler"/> class.
         /// </summary>
         /// <param name="queryRepository">The query repository.</param>
-        public GetQueryByTenantIdQueryHandler(IQueryRepository queryRepository)
+        public GetUnscrappedQueryQueryHandler(IQueryRepository queryRepository)
         {
             this.queryRepository = queryRepository;
         }
@@ -41,11 +41,11 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.Query
         /// <param name="query">The query.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        public async Task<IEnumerable<Query>> Handle(GetQueryByTenantIdQuery query, CancellationToken cancellationToken)
+        public async Task<Query> Handle(GetUnscrappedQueryQuery query, CancellationToken cancellationToken)
         {
-            IEnumerable<Query> queries = await this.queryRepository.GetByTenantIdAsync(query.TenantId, cancellationToken);
+            Query request = await this.queryRepository.GetUnscrappedQueryAsync(query.IsInstant, cancellationToken);
 
-            return queries;
+            return request;
         }
     }
 }

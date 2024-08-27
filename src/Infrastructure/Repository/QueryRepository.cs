@@ -10,6 +10,7 @@
 namespace GMapsMagicianAPI.Infrastructure.Repository
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
+    using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
     using GMapsMagicianAPI.Infrastructure;
     using Microsoft.EntityFrameworkCore;
@@ -48,11 +49,19 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         }
 
         /// <summary>
-        /// Gets the duplicated by filters asynchronous.
+        /// Gets the unscrapped query asynchronous.
         /// </summary>
-        /// <param name="rawQuery">The raw query.</param>
-        /// <param name="tenantId">The tenant identifier.</param>
+        /// <param name="IsInstant"></param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
+        public async Task<Query> GetUnscrappedQueryAsync(bool isInstant, CancellationToken cancellationToken)
+        {
+            return await this.Entities
+                .Where(x =>
+                    x.Status == QueryStatus.UNSCRAPED &&
+                    x.ActiveScraper == null &&
+                    x.IsInstant == isInstant)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
     }
 }

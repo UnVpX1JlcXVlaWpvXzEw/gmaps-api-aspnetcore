@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.Query
+namespace GMapsMagicianAPI.Presentation.WebAPI.Queries.GetQueryByTenantIdQuery
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using MediatR;
