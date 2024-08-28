@@ -33,7 +33,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query
         /// Gets a value indicating whether this instance is instant query.
         /// </summary>
         /// <value><c>true</c> if this instance is instant query; otherwise, <c>false</c>.</value>
-        public bool IsInstantQuery { get; init; }
+        public bool IsInstant { get; init; }
 
         /// <summary>
         /// Gets the raw query.

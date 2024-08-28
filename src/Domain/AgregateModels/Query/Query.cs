@@ -35,10 +35,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Initializes a new instance of the <see cref="Query"/> class.
         /// </summary>
         /// <param name="rawQuery">The raw query.</param>
-        /// <param name="gMapsSearchLink">The g maps search link.</param>
         /// <param name="tenantId">The tenant identifier.</param>
-        /// <param name="activeScraper">The active scraper.</param>
-        /// <param name="isInstant">if set to <c>true</c> [is instant query].</param>
         internal Query(string rawQuery, Guid tenantId)
             : this()
         {
@@ -110,6 +107,22 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         public void FinishScrapping()
         {
             Status = QueryStatus.SCRAPED;
+        }
+
+        /// <summary>
+        /// Determines whether [is instant query].
+        /// </summary>
+        public void IsInstantQuery()
+        {
+            this.IsInstant = true;
+        }
+
+        /// <summary>
+        /// Nots the instant query.
+        /// </summary>
+        public void NotInstantQuery()
+        {
+            this.IsInstant = false;
         }
 
         /// <summary>

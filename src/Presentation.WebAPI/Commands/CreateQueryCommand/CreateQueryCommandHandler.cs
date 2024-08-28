@@ -13,6 +13,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.CreateQueryCommand
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
     using GMapsMagicianAPI.Domain.Exceptions;
+    using GMapsMagicianAPI.Domain.Services.QueryService;
     using MediatR;
 
     /// <summary>
@@ -32,16 +33,24 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.CreateQueryCommand
         private readonly IQueryRepository queryRepository;
 
         /// <summary>
+        /// The query service
+        /// </summary>
+        private readonly IQueryService queryService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateQueryCommandHandler"/> class.
         /// </summary>
         /// <param name="queryBuilder">The query builder.</param>
         /// <param name="queryRepository">The query repository.</param>
+        /// <param name="queryService">The query service.</param>
         public CreateQueryCommandHandler(
             IQueryBuilder queryBuilder,
-            IQueryRepository queryRepository)
+            IQueryRepository queryRepository,
+            IQueryService queryService)
         {
             this.queryBuilder = queryBuilder;
             this.queryRepository = queryRepository;
+            this.queryService = queryService;
         }
 
         /// <summary>
@@ -60,6 +69,8 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.CreateQueryCommand
                 request.RawQuery,
                 request.TenantId)
                 .Build();
+
+            await this.queryService.VerifyInstantQueryAsync(query);
 
             await this.queryRepository.AddAsync(query, cancellationToken);
 
