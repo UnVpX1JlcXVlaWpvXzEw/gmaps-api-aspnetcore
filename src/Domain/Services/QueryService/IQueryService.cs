@@ -12,6 +12,9 @@ namespace GMapsMagicianAPI.Domain.Services.QueryService
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// <see cref="IQueryService"/>
+    /// </summary>
     public interface IQueryService
     {
         Task VerifyInstantQueryAsync(Query query);
