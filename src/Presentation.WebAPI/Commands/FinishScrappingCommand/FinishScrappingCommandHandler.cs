@@ -29,7 +29,6 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         /// Initializes a new instance of the <see cref="FinishScrappingCommandHandler"/> class.
         /// </summary>
         /// <param name="queryRepository">The query repository.</param>
-        /// <param name="queryBuilder">The query builder.</param>
         public FinishScrappingCommandHandler(IQueryRepository queryRepository)
         {
             this.queryRepository = queryRepository;
