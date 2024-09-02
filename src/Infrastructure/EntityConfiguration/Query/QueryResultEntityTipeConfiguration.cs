@@ -18,7 +18,7 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
     /// <see cref="QueryResultEntityTipeConfiguration"/>
     /// </summary>
     /// <seealso cref="EntityTypeConfiguration{QueryResult}"/>
-    internal class QueryResultEntityTipeConfiguration : EntityTypeConfiguration<QueryResult>
+    internal class QueryResultEntityTipeConfiguration : EntityTypeConfiguration<QueryResults>
     {
         /// <summary>
         /// Gets the name of the table.
@@ -30,7 +30,7 @@ namespace GMapsMagicianAPI.Infrastructure.EntityConfiguration.Query
         /// Configures the entity.
         /// </summary>
         /// <param name="builder">The builder.</param>
-        protected override void ConfigureEntity(EntityTypeBuilder<QueryResult> builder)
+        protected override void ConfigureEntity(EntityTypeBuilder<QueryResults> builder)
         {
             builder.Property(e => e.Link)
                 .HasMaxLength(500)

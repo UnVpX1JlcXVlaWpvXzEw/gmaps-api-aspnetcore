@@ -26,7 +26,7 @@ namespace GMapsMagicianAPI.Infrastructure.Configuration
         {
             services.AddScoped<IQueryRepository, QueryRepository>();
 
-            services.AddScoped<IQueryResultRepository, QueryResultRepository>();
+            services.AddScoped<IQueryResultsRepository, QueryResultsRepository>();
 
             services.AddScoped<IQueryResultStatusHistoryRepository, QueryResultStatusHistoryRepository>();
 

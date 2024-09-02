@@ -29,13 +29,15 @@ namespace GMapsMagicianAPI.Domain.Configuration
         {
             services.AddTransient<IQueryBuilder, QueryBuilder>();
 
-            services.AddTransient<IQueryResultBuilder, QueryResultBuilder>();
+            services.AddTransient<IQueryResultsBuilder, QueryResultsBuilder>();
 
             services.AddTransient<IQueryResultStatusHistoryBuilder, QueryResultStatusHistoryBuilder>();
 
             services.AddTransient<IQueryStatusHistoryBuilder, QueryStatusHistoryBuilder>();
 
             services.AddScoped<IQueryService, QueryService>();
+
+            services.AddTransient<IQueryResultsBuilder, QueryResultsBuilder>();
         }
     }
 }

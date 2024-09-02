@@ -24,7 +24,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <summary>
         /// The results
         /// </summary>
-        private readonly List<QueryResult> queryResults;
+        private readonly List<QueryResults> queryResults;
 
         /// <summary>
         /// The status history
@@ -49,7 +49,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         protected Query()
             : base()
         {
-            this.queryResults = new List<QueryResult>();
+            this.queryResults = new List<QueryResults>();
             this.statusHistory = new List<QueryStatusHistory>();
         }
 
@@ -75,7 +75,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets the query results.
         /// </summary>
         /// <value>The query results.</value>
-        public virtual IReadOnlyCollection<QueryResult> QueryResults => this.queryResults;
+        public virtual IReadOnlyCollection<QueryResults> QueryResults => this.queryResults;
 
         /// <summary>
         /// Gets or sets the raw query.
@@ -102,14 +102,6 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         public Guid TenantId { get; init; }
 
         /// <summary>
-        /// Finishes the scrapping.
-        /// </summary>
-        public void FinishScrapping()
-        {
-            Status = QueryStatus.SCRAPED;
-        }
-
-        /// <summary>
         /// Determines whether [is instant query].
         /// </summary>
         public void IsInstantQuery()
@@ -129,11 +121,11 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Starts the scrapping.
         /// </summary>
         /// <param name="Uuid">The UUID.</param>
-        public void StartScrapping(string activeScraper, string gMapsMagician)
+        public void StartScrapping(string activeScraper, string gMapsSearchLink)
         {
             this.Status = QueryStatus.SCRAPING;
             this.ActiveScraper = activeScraper;
-            this.GMapsSearchLink = gMapsMagician;
+            this.GMapsSearchLink = gMapsSearchLink;
         }
 
         /// <summary>

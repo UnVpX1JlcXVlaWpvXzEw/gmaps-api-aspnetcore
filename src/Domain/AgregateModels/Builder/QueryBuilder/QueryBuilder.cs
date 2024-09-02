@@ -27,7 +27,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder
         /// Builds this instance.
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="System.InvalidOperationException">The query object is not initialized</exception>
+        /// <exception cref="InvalidOperationException">The query object is not initialized</exception>
         public Query Build()
         {
             if (query is null)

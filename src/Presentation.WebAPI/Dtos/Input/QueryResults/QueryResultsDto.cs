@@ -1,33 +1,25 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="FinishScrappingCommand.cs" company="ApexAlgorithms">
+// <copyright file="QueryResultsDto.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// FinishScrappingCommand
+// QueryResultsDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
+namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.QueryResults
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
-    using MediatR;
 
     /// <summary>
-    /// <see cref="FinishScrappingCommand"/>
+    /// <see cref="QueryResultsDto"/>
     /// </summary>
-    /// <seealso cref="IRequest{QueryResults}"/>
-    public class FinishScrappingCommand : IRequest<IEnumerable<QueryResults>>
+    public class QueryResultsDto
     {
         /// <summary>
         /// Gets the link.
         /// </summary>
         /// <value>The link.</value>
         public List<QueryResults> Links { get; init; }
-
-        /// <summary>
-        /// Gets the UUID.
-        /// </summary>
-        /// <value>The UUID.</value>
-        public Guid Uuid { get; init; }
     }
 }

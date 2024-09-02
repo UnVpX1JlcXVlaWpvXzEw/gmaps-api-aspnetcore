@@ -10,23 +10,24 @@
 namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
+    using System.Collections.Generic;
 
     /// <summary>
-    /// <see cref="IQueryResultBuilder"/>
+    /// <see cref="IQueryResultsBuilder"/>
     /// </summary>
-    public interface IQueryResultBuilder
+    public interface IQueryResultsBuilder
     {
         /// <summary>
         /// Builds this instance.
         /// </summary>
         /// <returns></returns>
-        QueryResult Build();
+        List<QueryResults> Build();
 
         /// <summary>
         /// Creates new queryresult.
         /// </summary>
         /// <param name="link">The link.</param>
         /// <returns></returns>
-        IQueryResultBuilder NewQueryResult(string link);
+        IQueryResultsBuilder NewQueryResult(List<QueryResults> links);
     }
 }

@@ -12,6 +12,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Mappers
     using AutoMapper;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
+    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResults;
 
     /// <summary>
     /// <see cref="MapperProfile"/>
@@ -24,9 +25,13 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Mappers
         /// </summary>
         public MapperProfile()
         {
-            this.CreateMap<Query, QueryDetailsDto>()
+            this.CreateMap<QueryResults, QueryDetailsDto>()
                 .ForMember(x => x.Uuid,
                 opt => opt.MapFrom(src => src.UUId));
+
+            this.CreateMap<QueryResults, QueryResultsGenericDto>()
+                .ForMember(x => x.Link,
+                opt => opt.MapFrom(src => src.Link));
         }
     }
 }
