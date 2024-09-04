@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResults
+namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResult
 {
     /// <summary>
     /// <see cref="QueryResultGenericDto"/>

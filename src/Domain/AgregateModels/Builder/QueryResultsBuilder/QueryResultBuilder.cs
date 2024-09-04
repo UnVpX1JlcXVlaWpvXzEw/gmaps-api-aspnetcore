@@ -1,21 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QueryResultsBuilder.cs" company="ApexAlgorithms">
+// <copyright file="QueryResultBuilder.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// QueryResultsBuilder
+// QueryResultBuilder
 // </summary>
 // ----------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder
+namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultBuilder
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using System;
 
     /// <summary>
-    /// <see cref="QueryResultsBuilder"/>
+    /// <see cref="QueryResultBuilder"/>
     /// </summary>
-    /// <seealso cref="QueryResultsBuilder.IQueryResultsBuilder"/>
+    /// <seealso cref="QueryResultBuilder.IQueryResultBuilder"/>
     internal class QueryResultBuilder : IQueryResultBuilder
     {
         /// <summary>

@@ -15,7 +15,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
     /// <summary>
     /// <see cref="FinishScrappingCommand"/>
     /// </summary>
-    /// <seealso cref="IRequest{QueryResults}"/>
+    /// <seealso cref="IRequest{QueryResult}"/>
     public class FinishScrappingCommand : IRequest<IEnumerable<QueryResult>>
     {
         /// <summary>

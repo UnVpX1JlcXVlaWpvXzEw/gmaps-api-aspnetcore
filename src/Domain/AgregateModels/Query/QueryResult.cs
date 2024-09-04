@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QueryResults.cs" company="ApexAlgorithms">
+// <copyright file="QueryResult.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// QueryResults
+// QueryResult
 // </summary>
 // ----------------------------------------------------------------------------------------------------------------
 

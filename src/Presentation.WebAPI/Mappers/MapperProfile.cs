@@ -12,7 +12,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Mappers
     using AutoMapper;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
-    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResults;
+    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResult;
 
     /// <summary>
     /// <see cref="MapperProfile"/>

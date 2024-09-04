@@ -10,7 +10,7 @@
 namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
-    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder;
+    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
     using GMapsMagicianAPI.Domain.Exceptions;
@@ -29,26 +29,26 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         private readonly IQueryRepository queryRepository;
 
         /// <summary>
-        /// The query results builder
+        /// The query result builder
         /// </summary>
-        private readonly IQueryResultBuilder queryResultsBuilder;
+        private readonly IQueryResultBuilder queryResultBuilder;
 
         /// <summary>
-        /// The query results repository
+        /// The query result repository
         /// </summary>
-        private readonly IQueryResultRepository queryResultsRepository;
+        private readonly IQueryResultRepository queryResultRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FinishScrappingCommandHandler"/> class.
         /// </summary>
-        /// <param name="queryResultsRepository">The query results repository.</param>
-        /// <param name="queryResultsBuilder">The query results builder.</param>
+        /// <param name="queryResultRepository">The query result repository.</param>
+        /// <param name="queryResultBuilder">The query result builder.</param>
         /// <param name="queryRepository">The query repository.</param>
         /// <param name="queryBuilder">The query builder.</param>
-        public FinishScrappingCommandHandler(IQueryResultRepository queryResultsRepository, IQueryResultBuilder queryResultsBuilder, IQueryRepository queryRepository, IQueryBuilder queryBuilder)
+        public FinishScrappingCommandHandler(IQueryResultRepository queryResultRepository, IQueryResultBuilder queryResultBuilder, IQueryRepository queryRepository, IQueryBuilder queryBuilder)
         {
-            this.queryResultsRepository = queryResultsRepository;
-            this.queryResultsBuilder = queryResultsBuilder;
+            this.queryResultRepository = queryResultRepository;
+            this.queryResultBuilder = queryResultBuilder;
             this.queryRepository = queryRepository;
         }
 
@@ -80,7 +80,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
 
             foreach (string link in request.Links)
             {
-                QueryResult queryResult = this.queryResultsBuilder
+                QueryResult queryResult = this.queryResultBuilder
                     .NewQueryResult(link)
                     .Build();
 
@@ -89,9 +89,9 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
                     throw new NotFoundException($"The query with link {request.Links} wasn't found.");
                 }
 
-                await this.queryResultsRepository.Update(queryResult, cancellationToken);
+                await this.queryResultRepository.Update(queryResult, cancellationToken);
 
-                await this.queryResultsRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
+                await this.queryResultRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
 
                 queryResults.Add(queryResult);
                 query.AddResults(queryResult);

@@ -7,12 +7,12 @@
 // </summary>
 // ----------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder
+namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultBuilder
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
 
     /// <summary>
-    /// <see cref="IQueryResultsBuilder"/>
+    /// <see cref="IQueryResultBuilder"/>
     /// </summary>
     public interface IQueryResultBuilder
     {

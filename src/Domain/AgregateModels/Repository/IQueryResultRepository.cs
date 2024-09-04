@@ -18,7 +18,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Repository
     /// <summary>
     /// <see cref="IQueryResultRepository"/>
     /// </summary>
-    /// <seealso cref="IRepository{QueryResults}"/>
+    /// <seealso cref="IRepository{QueryResult}"/>
     public interface IQueryResultRepository : IRepository<QueryResult>
     {
         Task<IEnumerable<QueryResult>> GetByLinkAsync(string link, CancellationToken cancellationToken);

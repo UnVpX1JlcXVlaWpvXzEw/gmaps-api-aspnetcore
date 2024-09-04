@@ -10,7 +10,7 @@
 namespace GMapsMagicianAPI.Domain.Configuration
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
-    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder;
+    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultStatusHistory;
     using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryStatusHistoryBuilder;
     using GMapsMagicianAPI.Domain.Services.QueryService;

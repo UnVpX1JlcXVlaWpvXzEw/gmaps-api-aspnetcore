@@ -18,7 +18,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.QueryResult;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
-    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResults;
+    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResult;
     using GMapsMagicianAPI.Presentation.WebAPI.Queries.GetQueryByTenantIdQuery;
     using GMapsMagicianAPI.Presentation.WebAPI.Queries.GetUnscrappedQueryQuery;
     using GMapsMagicianAPI.Presentation.WebAPI.Utils;
