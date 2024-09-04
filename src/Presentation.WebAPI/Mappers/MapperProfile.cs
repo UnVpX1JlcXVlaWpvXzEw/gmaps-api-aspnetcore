@@ -25,7 +25,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Mappers
         /// </summary>
         public MapperProfile()
         {
-            this.CreateMap<QueryResult, QueryDetailsDto>()
+            this.CreateMap<Query, QueryDetailsDto>()
                 .ForMember(x => x.Uuid,
                 opt => opt.MapFrom(src => src.UUId));
 

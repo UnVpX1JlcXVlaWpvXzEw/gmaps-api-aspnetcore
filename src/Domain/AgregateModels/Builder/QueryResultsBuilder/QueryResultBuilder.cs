@@ -45,7 +45,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultBuilder
         /// <returns></returns>
         public IQueryResultBuilder NewQueryResult(string link)
         {
-            queryResult = new QueryResult(link);
+            queryResult = new(link);
 
             return this;
         }

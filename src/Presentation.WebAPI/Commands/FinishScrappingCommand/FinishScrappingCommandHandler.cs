@@ -9,7 +9,6 @@
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
 {
-    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
@@ -44,8 +43,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         /// <param name="queryResultRepository">The query result repository.</param>
         /// <param name="queryResultBuilder">The query result builder.</param>
         /// <param name="queryRepository">The query repository.</param>
-        /// <param name="queryBuilder">The query builder.</param>
-        public FinishScrappingCommandHandler(IQueryResultRepository queryResultRepository, IQueryResultBuilder queryResultBuilder, IQueryRepository queryRepository, IQueryBuilder queryBuilder)
+        public FinishScrappingCommandHandler(IQueryResultRepository queryResultRepository, IQueryResultBuilder queryResultBuilder, IQueryRepository queryRepository)
         {
             this.queryResultRepository = queryResultRepository;
             this.queryResultBuilder = queryResultBuilder;
@@ -66,8 +64,8 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         {
             Query query = await this.queryRepository
                 .GetAsync(
-                request.Uuid,
-                cancellationToken);
+                    request.Uuid,
+                    cancellationToken);
 
             if (query is null)
             {
