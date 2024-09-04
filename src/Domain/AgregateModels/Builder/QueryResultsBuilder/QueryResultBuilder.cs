@@ -16,19 +16,19 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder
     /// <see cref="QueryResultsBuilder"/>
     /// </summary>
     /// <seealso cref="QueryResultsBuilder.IQueryResultsBuilder"/>
-    internal class QueryResultsBuilder : IQueryResultsBuilder
+    internal class QueryResultBuilder : IQueryResultBuilder
     {
         /// <summary>
         /// The query result
         /// </summary>
-        private List<QueryResults> queryResult;
+        private QueryResult queryResult;
 
         /// <summary>
         /// Builds this instance.
         /// </summary>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">The template object is not initialized.</exception>
-        public List<QueryResults> Build()
+        public QueryResult Build()
         {
             if (queryResult is null)
             {
@@ -41,14 +41,11 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder
         /// <summary>
         /// Creates new queryresult.
         /// </summary>
-        /// <param name="Link"></param>
+        /// <param name="link"></param>
         /// <returns></returns>
-        public IQueryResultsBuilder NewQueryResult(List<QueryResults> links)
+        public IQueryResultBuilder NewQueryResult(string link)
         {
-            foreach (var link in links)
-            {
-                queryResult = new List<QueryResults>(links);
-            }
+            queryResult = new QueryResult(link);
 
             return this;
         }

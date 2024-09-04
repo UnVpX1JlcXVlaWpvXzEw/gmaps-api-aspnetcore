@@ -14,10 +14,10 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
     using System.Collections.Generic;
 
     /// <summary>
-    /// <see cref="QueryResults"/>
+    /// <see cref="QueryResult"/>
     /// </summary>
     /// <seealso cref="EntityBase"/>
-    public class QueryResults : EntityBase
+    public class QueryResult : EntityBase
     {
         /// <summary>
         /// The result status histories
@@ -25,19 +25,19 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         private readonly List<QueryResultStatusHistory> resultStatusHistory;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryResults"/> class.
+        /// Initializes a new instance of the <see cref="QueryResult"/> class.
         /// </summary>
         /// <param name="link">The link.</param>
-        internal QueryResults(string link)
+        internal QueryResult(string link)
             : this()
         {
             this.Link = link;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryResults"/> class.
+        /// Initializes a new instance of the <see cref="QueryResult"/> class.
         /// </summary>
-        protected QueryResults()
+        protected QueryResult()
             : base()
         {
             this.resultStatusHistory = new List<QueryResultStatusHistory>();
@@ -61,7 +61,11 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <value>The status.</value>
         public QueryResultStatus Status { get; private set; }
 
-        public void FinishScrapping()
+        /// <summary>
+        /// Finishes the scrapping.
+        /// </summary>
+        /// <param name="queryResult">The query result.</param>
+        public void FinishScrapping(QueryResult queryResult)
         {
             Status = QueryResultStatus.SCRAPED;
         }

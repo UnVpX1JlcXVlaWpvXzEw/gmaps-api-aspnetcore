@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IQueryResultsRepository.cs" company="ApexAlgorithms">
+// <copyright file="IQueryResultRepository.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// IQueryResultsRepository
+// IQueryResultRepository
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -16,11 +16,11 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Repository
     using System.Threading.Tasks;
 
     /// <summary>
-    /// <see cref="IQueryResultsRepository"/>
+    /// <see cref="IQueryResultRepository"/>
     /// </summary>
     /// <seealso cref="IRepository{QueryResults}"/>
-    public interface IQueryResultsRepository : IRepository<QueryResults>
+    public interface IQueryResultRepository : IRepository<QueryResult>
     {
-        Task<IEnumerable<QueryResults>> GetByLinkAsync(string link, CancellationToken cancellationToken);
+        Task<IEnumerable<QueryResult>> GetByLinkAsync(string link, CancellationToken cancellationToken);
     }
 }

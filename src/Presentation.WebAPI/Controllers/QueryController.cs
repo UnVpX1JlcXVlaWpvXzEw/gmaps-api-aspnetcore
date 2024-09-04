@@ -16,7 +16,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
     using GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand;
     using GMapsMagicianAPI.Presentation.WebAPI.Commands.StartScrappingCommand;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.Query;
-    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.QueryResults;
+    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.QueryResult;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query;
     using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResults;
     using GMapsMagicianAPI.Presentation.WebAPI.Queries.GetQueryByTenantIdQuery;
@@ -102,23 +102,23 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
         /// <summary>
         /// Finishes the scrapping asynchronous.
         /// </summary>
-        /// <param name="Bodyfilter">The bodyfilter.</param>
-        /// <param name="Routefilters">The routefilters.</param>
+        /// <param name="bodyFilter">The bodyfilter.</param>
+        /// <param name="routeFilter">The routefilters.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         [HttpPost("{Uuid}/Scraping/Finish")]
-        [ProducesResponseType(typeof(QueryDetailsDto), (int)HttpStatusCode.Created)]
+        [ProducesResponseType(typeof(QueryDetailsDto), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> FinishScrappingAsync([FromBody] QueryResultsDto Bodyfilter, [FromRoute] FinishScrappingDto Routefilters, CancellationToken cancellationToken)
+        public async Task<IActionResult> FinishScrappingAsync([FromBody] QueryResultDto bodyFilter, [FromRoute] FinishScrappingDto routeFilter, CancellationToken cancellationToken)
         {
-            IEnumerable<QueryResults> queryResults = await this.mediator.Send(new FinishScrappingCommand
+            IEnumerable<QueryResult> queryResults = await this.mediator.Send(new FinishScrappingCommand
             {
-                Uuid = Routefilters.Uuid,
-                Links = Bodyfilter.Links
+                Uuid = routeFilter.Uuid,
+                Links = bodyFilter.Links,
             }, cancellationToken);
 
-            return this.Created(string.Empty, this.mapper.Map<IEnumerable<QueryResultsGenericDto>>(queryResults));
+            return this.Ok(this.mapper.Map<IEnumerable<QueryResultGenericDto>>(queryResults));
         }
 
         /// <summary>
@@ -166,7 +166,8 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Controllers
         /// <summary>
         /// Starts the scrapping asynchronous.
         /// </summary>
-        /// <param name="filter">The filter.</param>
+        /// <param name="routeFilter">The route filter.</param>
+        /// <param name="bodyFilter">The body filter.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         [HttpPatch("{Uuid}/Scraping/Start")]

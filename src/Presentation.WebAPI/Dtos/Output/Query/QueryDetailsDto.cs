@@ -45,7 +45,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query
         /// Gets the results.
         /// </summary>
         /// <value>The results.</value>
-        public List<QueryResults> Results { get; init; }
+        public List<QueryResult> Results { get; init; }
 
         /// <summary>
         /// Gets the status.

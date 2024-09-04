@@ -9,6 +9,7 @@
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
 {
+    using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder;
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Repository;
@@ -18,30 +19,37 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
     using System.Threading.Tasks;
 
     /// <summary>
-    /// <see cref="FinishScrappingCommandHandler"/>
     /// </summary>
-    /// <seealso cref="IRequestHandler{FinishScrappingCommand, IEnumerable{QueryResults}}"/>
-    public class FinishScrappingCommandHandler : IRequestHandler<FinishScrappingCommand, IEnumerable<QueryResults>>
+    /// <seealso cref="IRequestHandler{FinishScrappingCommand, {IEnumerable}QueryResult}"/>
+    public class FinishScrappingCommandHandler : IRequestHandler<FinishScrappingCommand, IEnumerable<QueryResult>>
     {
+        /// <summary>
+        /// The query repository
+        /// </summary>
+        private readonly IQueryRepository queryRepository;
+
         /// <summary>
         /// The query results builder
         /// </summary>
-        private readonly IQueryResultsBuilder queryResultsBuilder;
+        private readonly IQueryResultBuilder queryResultsBuilder;
 
         /// <summary>
         /// The query results repository
         /// </summary>
-        private readonly IQueryResultsRepository queryResultsRepository;
+        private readonly IQueryResultRepository queryResultsRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FinishScrappingCommandHandler"/> class.
         /// </summary>
         /// <param name="queryResultsRepository">The query results repository.</param>
         /// <param name="queryResultsBuilder">The query results builder.</param>
-        public FinishScrappingCommandHandler(IQueryResultsRepository queryResultsRepository, IQueryResultsBuilder queryResultsBuilder)
+        /// <param name="queryRepository">The query repository.</param>
+        /// <param name="queryBuilder">The query builder.</param>
+        public FinishScrappingCommandHandler(IQueryResultRepository queryResultsRepository, IQueryResultBuilder queryResultsBuilder, IQueryRepository queryRepository, IQueryBuilder queryBuilder)
         {
             this.queryResultsRepository = queryResultsRepository;
             this.queryResultsBuilder = queryResultsBuilder;
+            this.queryRepository = queryRepository;
         }
 
         /// <summary>
@@ -50,26 +58,45 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Response from the request</returns>
-        /// <exception cref="NotFoundException">The query with link {request.Link} wasn't found.</exception>
-        public async Task<IEnumerable<QueryResults>> Handle(FinishScrappingCommand request, CancellationToken cancellationToken)
+        /// <exception cref="NotFoundException">
+        /// The query with id {request.Uuid} wasn't found. or The query with link {request.Links}
+        /// wasn't found.
+        /// </exception>
+        public async Task<IEnumerable<QueryResult>> Handle(FinishScrappingCommand request, CancellationToken cancellationToken)
         {
-            List<QueryResults> queryResults = this.queryResultsBuilder
-                .NewQueryResult(request.Links)
-                .Build();
+            Query query = await this.queryRepository
+                .GetAsync(
+                request.Uuid,
+                cancellationToken);
 
-            if (queryResultsRepository is null)
+            if (query is null)
             {
-                throw new NotFoundException($"The query with link {request.Links} wasn't found.");
+                throw new NotFoundException($"The query with id {request.Uuid} wasn't found.");
             }
 
-            foreach (var queryResult in queryResults)
+            query.FinishScrapping();
+
+            var queryResults = new List<QueryResult>();
+
+            foreach (string link in request.Links)
             {
-                queryResult.FinishScrapping();
+                QueryResult queryResult = this.queryResultsBuilder
+                    .NewQueryResult(link)
+                    .Build();
+
+                if (queryResult is null)
+                {
+                    throw new NotFoundException($"The query with link {request.Links} wasn't found.");
+                }
+
+                await this.queryResultsRepository.Update(queryResult, cancellationToken);
+
+                await this.queryResultsRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
+
+                queryResults.Add(queryResult);
+                query.AddResults(queryResult);
             }
-
-            await this.queryResultsRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
-
-            return (IEnumerable<QueryResults>)queryResults;
+            return queryResults;
         }
     }
 }

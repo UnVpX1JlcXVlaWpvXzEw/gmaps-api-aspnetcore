@@ -1,29 +1,29 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QueryResultsGenericDto.cs" company="ApexAlgorithms">
+// <copyright file="QueryResultGenericDto.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// QueryResultsGenericDto
+// QueryResultGenericDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResults
 {
     /// <summary>
-    /// <see cref="QueryResultsGenericDto"/>
+    /// <see cref="QueryResultGenericDto"/>
     /// </summary>
-    public class QueryResultsGenericDto
+    public class QueryResultGenericDto
     {
         /// <summary>
-        /// Gets the link.
+        /// Gets the links.
         /// </summary>
-        /// <value>The link.</value>
+        /// <value>The links.</value>
         public string Link { get; init; }
 
         /// <summary>
         /// Gets the UUID.
         /// </summary>
         /// <value>The UUID.</value>
-        public string Uuid { get; init; }
+        public Guid Uuid { get; init; }
     }
 }

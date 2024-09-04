@@ -1,33 +1,32 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IQueryResultsBuilder.cs" company="ApexAlgorithms">
+// <copyright file="IQueryResultBuilder.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// IQueryResultsBuilder
+// IQueryResultBuilder
 // </summary>
 // ----------------------------------------------------------------------------------------------------------------
 
 namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultsBuilder
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query;
-    using System.Collections.Generic;
 
     /// <summary>
     /// <see cref="IQueryResultsBuilder"/>
     /// </summary>
-    public interface IQueryResultsBuilder
+    public interface IQueryResultBuilder
     {
         /// <summary>
         /// Builds this instance.
         /// </summary>
         /// <returns></returns>
-        List<QueryResults> Build();
+        QueryResult Build();
 
         /// <summary>
         /// Creates new queryresult.
         /// </summary>
         /// <param name="link">The link.</param>
         /// <returns></returns>
-        IQueryResultsBuilder NewQueryResult(List<QueryResults> links);
+        IQueryResultBuilder NewQueryResult(string link);
     }
 }

@@ -10,6 +10,7 @@
 namespace GMapsMagicianAPI.Domain.AgregateModels.Query
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
+    using GMapsMagicianAPI.Domain.Exceptions;
     using GMapsMagicianAPI.Domain.SeedWork;
     using System;
     using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <summary>
         /// The results
         /// </summary>
-        private readonly List<QueryResults> queryResults;
+        private readonly List<QueryResult> queryResults;
 
         /// <summary>
         /// The status history
@@ -49,7 +50,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         protected Query()
             : base()
         {
-            this.queryResults = new List<QueryResults>();
+            this.queryResults = new List<QueryResult>();
             this.statusHistory = new List<QueryStatusHistory>();
         }
 
@@ -75,7 +76,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// Gets the query results.
         /// </summary>
         /// <value>The query results.</value>
-        public virtual IReadOnlyCollection<QueryResults> QueryResults => this.queryResults;
+        public virtual IReadOnlyCollection<QueryResult> QueryResults => this.queryResults;
 
         /// <summary>
         /// Gets or sets the raw query.
@@ -102,6 +103,30 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         public Guid TenantId { get; init; }
 
         /// <summary>
+        /// Adds the results.
+        /// </summary>
+        /// <param name="queryResult">The query result.</param>
+        /// <exception cref="NotFoundException">
+        /// The query with link {queryResult.Link} wasn't found.
+        /// </exception>
+        public void AddResults(QueryResult queryResult)
+        {
+            if (queryResult is null)
+            {
+                throw new NotFoundException($"The query with link {queryResult.Link} wasn't found.");
+            }
+            this.queryResults.Add(queryResult);
+        }
+
+        /// <summary>
+        /// Finishes the scrapping.
+        /// </summary>
+        public void FinishScrapping()
+        {
+            Status = QueryStatus.SCRAPED;
+        }
+
+        /// <summary>
         /// Determines whether [is instant query].
         /// </summary>
         public void IsInstantQuery()
@@ -120,7 +145,8 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <summary>
         /// Starts the scrapping.
         /// </summary>
-        /// <param name="Uuid">The UUID.</param>
+        /// <param name="activeScraper">The active scraper.</param>
+        /// <param name="gMapsSearchLink">The g maps search link.</param>
         public void StartScrapping(string activeScraper, string gMapsSearchLink)
         {
             this.Status = QueryStatus.SCRAPING;

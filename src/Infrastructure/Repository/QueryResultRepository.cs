@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QueryResultsRepository.cs" company="ApexAlgorithms">
+// <copyright file="QueryResultRepository.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// QueryResultsRepository
+// QueryResultRepository
 // </summary>
 // ----------------------------------------------------------------------------------------------------------------
 
@@ -18,17 +18,17 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
     using System.Threading.Tasks;
 
     /// <summary>
-    /// <see cref="QueryResultsRepository"/>
+    /// <see cref="QueryResultRepository"/>
     /// </summary>
     /// <seealso cref="GenericRepository{QueryResult}"/>
-    /// <seealso cref="IQueryResultsRepository"/>
-    internal class QueryResultsRepository : GenericRepository<QueryResults>, IQueryResultsRepository
+    /// <seealso cref="IQueryResultRepository"/>
+    internal class QueryResultRepository : GenericRepository<QueryResult>, IQueryResultRepository
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryResultsRepository"/> class.
+        /// Initializes a new instance of the <see cref="QueryResultRepository"/> class.
         /// </summary>
         /// <param name="context">The context.</param>
-        public QueryResultsRepository(GMapsMagicianAPIDBContext context)
+        public QueryResultRepository(GMapsMagicianAPIDBContext context)
             : base(context)
         {
         }
@@ -39,7 +39,7 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         /// <param name="link">The link.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        public async Task<IEnumerable<QueryResults>> GetByLinkAsync(string link, CancellationToken cancellationToken)
+        public async Task<IEnumerable<QueryResult>> GetByLinkAsync(string link, CancellationToken cancellationToken)
         {
             return await this.Entities
                 .Where(x =>
