@@ -34,21 +34,15 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         private readonly IQueryResultBuilder queryResultBuilder;
 
         /// <summary>
-        /// The query result repository
-        /// </summary>
-        private readonly IQueryResultRepository queryResultRepository;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="FinishScrappingCommandHandler"/> class.
         /// </summary>
         /// <param name="queryResultRepository">The query result repository.</param>
         /// <param name="queryResultBuilder">The query result builder.</param>
         /// <param name="queryRepository">The query repository.</param>
-        public FinishScrappingCommandHandler(IQueryResultRepository queryResultRepository,
+        public FinishScrappingCommandHandler(
             IQueryResultBuilder queryResultBuilder,
             IQueryRepository queryRepository)
         {
-            this.queryResultRepository = queryResultRepository;
             this.queryResultBuilder = queryResultBuilder;
             this.queryRepository = queryRepository;
         }
@@ -74,24 +68,32 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
                 throw new NotFoundException($"The query with id {request.Uuid} wasn't found.");
             }
 
+            BuildQueryResults(request.Links, query);
+
             query.FinishScrapping();
 
-            var queryResults = new List<QueryResult>();
+            await this.queryRepository.Update(query, cancellationToken);
 
-            foreach (string link in request.Links)
+            await this.queryRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
+
+            return query.QueryResults;
+        }
+
+        /// <summary>
+        /// Builds the query results.
+        /// </summary>
+        /// <param name="links">The links.</param>
+        /// <param name="query">The query.</param>
+        private void BuildQueryResults(List<string> links, Query query)
+        {
+            foreach (string link in links)
             {
                 QueryResult queryResult = this.queryResultBuilder
                     .NewQueryResult(link)
                     .Build();
 
-                await this.queryResultRepository.Update(queryResult, cancellationToken);
-
-                await this.queryResultRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
-
-                queryResults.Add(queryResult);
                 query.AddResult(queryResult);
             }
-            return queryResults;
         }
     }
 }

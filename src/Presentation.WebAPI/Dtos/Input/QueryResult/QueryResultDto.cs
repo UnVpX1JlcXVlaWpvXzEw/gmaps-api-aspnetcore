@@ -19,11 +19,5 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Input.QueryResult
         /// </summary>
         /// <value>The links.</value>
         public List<string> Links { get; init; }
-
-        /// <summary>
-        /// Gets the UUID.
-        /// </summary>
-        /// <value>The UUID.</value>
-        public Guid Uuid { get; init; }
     }
 }
