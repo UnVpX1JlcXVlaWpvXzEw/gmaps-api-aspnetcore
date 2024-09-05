@@ -15,7 +15,7 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Builder.QueryResultBuilder
     /// <summary>
     /// <see cref="QueryResultBuilder"/>
     /// </summary>
-    /// <seealso cref="QueryResultBuilder.IQueryResultBuilder"/>
+    /// <seealso cref="IQueryResultBuilder"/>
     internal class QueryResultBuilder : IQueryResultBuilder
     {
         /// <summary>

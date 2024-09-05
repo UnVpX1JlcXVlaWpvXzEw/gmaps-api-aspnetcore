@@ -62,15 +62,6 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         public QueryResultStatus Status { get; private set; }
 
         /// <summary>
-        /// Finishes the scrapping.
-        /// </summary>
-        /// <param name="queryResult">The query result.</param>
-        public void FinishScrapping(QueryResult queryResult)
-        {
-            Status = QueryResultStatus.SCRAPED;
-        }
-
-        /// <summary>
         /// Gets the atomic values.
         /// </summary>
         /// <returns></returns>

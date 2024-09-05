@@ -109,12 +109,8 @@ namespace GMapsMagicianAPI.Domain.AgregateModels.Query
         /// <exception cref="NotFoundException">
         /// The query with link {queryResult.Link} wasn't found.
         /// </exception>
-        public void AddResults(QueryResult queryResult)
+        public void AddResult(QueryResult queryResult)
         {
-            if (queryResult is null)
-            {
-                throw new NotFoundException($"The query with link {queryResult.Link} wasn't found.");
-            }
             this.queryResults.Add(queryResult);
         }
 

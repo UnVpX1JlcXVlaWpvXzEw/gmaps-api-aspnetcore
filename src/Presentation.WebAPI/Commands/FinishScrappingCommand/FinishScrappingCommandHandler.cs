@@ -18,8 +18,9 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
     using System.Threading.Tasks;
 
     /// <summary>
+    /// <see cref="FinishScrappingCommandHandler"/>
     /// </summary>
-    /// <seealso cref="IRequestHandler{FinishScrappingCommand, {IEnumerable}QueryResult}"/>
+    /// <seealso cref="IRequestHandler{FinishScrappingCommand, {IEnumerable{QueryResult}}"/>
     public class FinishScrappingCommandHandler : IRequestHandler<FinishScrappingCommand, IEnumerable<QueryResult>>
     {
         /// <summary>
@@ -43,7 +44,9 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         /// <param name="queryResultRepository">The query result repository.</param>
         /// <param name="queryResultBuilder">The query result builder.</param>
         /// <param name="queryRepository">The query repository.</param>
-        public FinishScrappingCommandHandler(IQueryResultRepository queryResultRepository, IQueryResultBuilder queryResultBuilder, IQueryRepository queryRepository)
+        public FinishScrappingCommandHandler(IQueryResultRepository queryResultRepository,
+            IQueryResultBuilder queryResultBuilder,
+            IQueryRepository queryRepository)
         {
             this.queryResultRepository = queryResultRepository;
             this.queryResultBuilder = queryResultBuilder;
@@ -62,8 +65,7 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
         /// </exception>
         public async Task<IEnumerable<QueryResult>> Handle(FinishScrappingCommand request, CancellationToken cancellationToken)
         {
-            Query query = await this.queryRepository
-                .GetAsync(
+            Query query = await this.queryRepository.GetAsync(
                     request.Uuid,
                     cancellationToken);
 
@@ -82,17 +84,12 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Commands.FinishScrappingCommand
                     .NewQueryResult(link)
                     .Build();
 
-                if (queryResult is null)
-                {
-                    throw new NotFoundException($"The query with link {request.Links} wasn't found.");
-                }
-
                 await this.queryResultRepository.Update(queryResult, cancellationToken);
 
                 await this.queryResultRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
 
                 queryResults.Add(queryResult);
-                query.AddResults(queryResult);
+                query.AddResult(queryResult);
             }
             return queryResults;
         }

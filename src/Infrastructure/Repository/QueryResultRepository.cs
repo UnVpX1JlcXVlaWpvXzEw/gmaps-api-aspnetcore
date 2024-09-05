@@ -43,7 +43,7 @@ namespace GMapsMagicianAPI.Infrastructure.Repository
         {
             return await this.Entities
                 .Where(x =>
-                x.Link == link)
+                    x.Link == link)
                 .ToListAsync(cancellationToken);
         }
     }
