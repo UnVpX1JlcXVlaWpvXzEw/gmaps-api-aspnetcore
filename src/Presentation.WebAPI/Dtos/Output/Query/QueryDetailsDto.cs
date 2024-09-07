@@ -10,6 +10,7 @@
 namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
+    using GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResult;
 
     /// <summary>
     /// <see cref="QueryDetailsDto"/>
@@ -39,6 +40,12 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query
         /// </summary>
         /// <value>The raw query.</value>
         public string RawQuery { get; init; }
+
+        /// <summary>
+        /// Gets the results.
+        /// </summary>
+        /// <value>The results.</value>
+        public List<QueryResultDetailsDto> Results { get; init; }
 
         /// <summary>
         /// Gets the status.
