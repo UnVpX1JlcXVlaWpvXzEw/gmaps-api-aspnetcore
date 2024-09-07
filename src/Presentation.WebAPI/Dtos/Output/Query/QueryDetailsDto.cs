@@ -9,7 +9,6 @@
 
 namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query
 {
-    using GMapsMagicianAPI.Domain.AgregateModels.Query;
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
 
     /// <summary>
@@ -42,22 +41,10 @@ namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.Query
         public string RawQuery { get; init; }
 
         /// <summary>
-        /// Gets the results.
-        /// </summary>
-        /// <value>The results.</value>
-        public List<QueryResult> Results { get; init; }
-
-        /// <summary>
         /// Gets the status.
         /// </summary>
         /// <value>The status.</value>
         public QueryStatus Status { get; init; }
-
-        /// <summary>
-        /// Gets the status history.
-        /// </summary>
-        /// <value>The status history.</value>
-        public List<QueryStatusHistory> StatusHistory { get; init; }
 
         /// <summary>
         /// Gets the tenant identifier.

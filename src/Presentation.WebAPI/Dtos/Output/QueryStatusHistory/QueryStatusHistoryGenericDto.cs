@@ -1,32 +1,32 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="QueryResultGenericDto.cs" company="ApexAlgorithms">
+// <copyright file="QueryStatusHistoryGenericDto.cs" company="ApexAlgorithms">
 //     Copyright (c) ApexAlgorithms. All rights reserved.
 // </copyright>
 // <summary>
-// QueryResultGenericDto
+// QueryStatusHistoryGenericDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryResult
+namespace GMapsMagicianAPI.Presentation.WebAPI.Dtos.Output.QueryStatusHistory
 {
     using GMapsMagicianAPI.Domain.AgregateModels.Query.Enums;
 
     /// <summary>
-    /// <see cref="QueryResultGenericDto"/>
+    /// <see cref="QueryStatusHistoryGenericDto"/>
     /// </summary>
-    public class QueryResultGenericDto
+    public class QueryStatusHistoryGenericDto
     {
         /// <summary>
-        /// Gets the links.
+        /// Gets the scrapping conclusion date.
         /// </summary>
-        /// <value>The links.</value>
-        public string Link { get; init; }
+        /// <value>The scrapping conclusion date.</value>
+        public DateTime ScrappingConclusionDate { get; init; }
 
         /// <summary>
         /// Gets the status.
         /// </summary>
         /// <value>The status.</value>
-        public QueryResultStatus Status { get; init; }
+        public QueryStatus Status { get; init; }
 
         /// <summary>
         /// Gets the UUID.
